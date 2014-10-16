@@ -1,4 +1,4 @@
-infosaeule
+Infosäule
 ==========
 
-Creating a PHP based info screen
+Softwareprojekt zur Entwicklung einer Infosäule.
