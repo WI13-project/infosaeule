@@ -1,10 +1,10 @@
 <?php
     $objObjekt->file_name(DEVELOPE,"DB connecten...." , "a" );
 
-    $_db_host = "localhost";            # meist localhost
-    $_db_datenbank = "SwE";
-    $_db_username = "root";
-    $_db_passwort = "";
+    $_db_host = "server6.webgo24.de";            # Klaus Sein Webhost
+    $_db_datenbank = "web424_db9";
+    $_db_username = "web424_9";
+    $_db_passwort = "graetzeristdoof";
 
     SESSION_START();
 
@@ -14,7 +14,7 @@
     # Hat die Verbindung geklappt ?
     if (!$link)
         {
-        die("Keine Datenbankverbindung möglich: " . mysql_error());
+        die("Keine Datenbankverbindung moeglich: " . mysql_error());
         }
 
     # Verbindung zur richtigen Datenbank herstellen
