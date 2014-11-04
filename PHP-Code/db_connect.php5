@@ -1,9 +1,9 @@
 <?php
     $objObjekt->file_name(DEVELOPE,"DB connecten...." , "a" );
 
-    $_db_host = "server6.webgo24.de";            # Klaus Sein Webhost
-    $_db_datenbank = "web424_db9";
-    $_db_username = "web424_9";
+    $_db_host = "geheim";            # Klaus Sein Webhost
+    $_db_datenbank = "geheim";
+    $_db_username = "geheim";
     $_db_passwort = "graetzeristdoof";
 
     SESSION_START();
