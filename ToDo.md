@@ -7,16 +7,16 @@ ToDo bzw Inhalte (Ideen?)
   - Content Manager: Inhalte freigeben, Laufzeit freigeben
   - Admin: (Nutzer-) Berechtigungen verwalten, Nutzer anlegen, Backups erstellen/einspielen
 - [ ] Admin-Bereich zur Verwaltung der Benutzer
-- [ ] Verwaltungsbereich der Texte
+- [ ] Verwaltungsbereich der Texte (mittels TinyMCE?)
   - [ ] Texte ändern
   - [ ] Texte re-aktivieren und deaktivieren
 - [ ] Bilder einfügen implementieren
 - [ ] Bildergalerie
 - [x] Serverspace für Bilder -> Klaus @zottelbeyer
-- [ ] Slideshow der InfoSäule
-- [ ] Vorschau (am unteren Rand) der nächsten Slideshowinhalte
+- [ ] Slideshow der InfoSäule -> Marcel @s137129, automatischer Inhaltswechsel mittels Javascript
+  - [ ] Vorschau (am unteren Rand) der nächsten Slideshowinhalte
+  - [ ] Grafische Ausschmückung
 - [x] CSS implementieren -> Vollbild, daher unnötig
-- [ ] Grafische Ausschmückung -> Marcel @s137129, automatischer Inhaltswechsel mittels Javascript
 - [ ] Willkommensseite
 
 
