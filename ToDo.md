@@ -2,18 +2,21 @@ ToDo bzw Inhalte (Ideen?)
 =========================
 
 - [ ] Benutzeranmeldung 
-- [ ] Benutzerverwaltung -> Rollen siehe Doku
+- [ ] Benutzerverwaltung, 3 Rollen, Rechte:
+  - Mitarbeiter: Inhalte erstellen, Bilder hochladen, Laufzeit vorschlagen
+  - Content Manager: Inhalte freigeben, Laufzeit freigeben
+  - Admin: (Nutzer-) Berechtigungen verwalten, Nutzer anlegen, Backups erstellen/einspielen
 - [ ] Admin-Bereich zur Verwaltung der Benutzer
 - [ ] Verwaltungsbereich der Texte
-  - [ ] Texte ändern
+  - [ ] Texte Ã¤ndern
   - [ ] Texte re-aktivieren und deaktivieren
-- [ ] Bilder einfügen implementieren
+- [ ] Bilder einfÃ¼gen implementieren
 - [ ] Bildergalerie
-- [x] Serverspace für Bilder -> Klaus @zottelbeyer
-- [ ] Slideshow der InfoSäule
-- [ ] Vorschau (am unteren Rand) der nächsten Slideshowinhalte
-- [x] CSS implementieren -> Vollbild, daher unnötig
-- [x] Grafische Ausschmückung -> s.o.
+- [x] Serverspace fÃ¼r Bilder -> Klaus @zottelbeyer
+- [ ] Slideshow der InfoSÃ¤ule
+- [ ] Vorschau (am unteren Rand) der nÃ¤chsten Slideshowinhalte
+- [x] CSS implementieren -> Vollbild, daher unnÃ¶tig
+- [ ] Grafische AusschmÃ¼ckung -> Marcel @s137129, automatischer Inhaltswechsel mittels Javascript
 - [ ] Willkommensseite
 
 
