@@ -7,23 +7,15 @@ define("DEF_ERROR",0);            //0---> Keine Anzeigen, 1---> Zeigt alle Fehle
 define("HELP",0);            //0---> Keine Anzeigen, 1---> Zeigt Nummer des Hilfetextes an
 define("OPTI",0);            //0---> Keine Anzeigen, 1---> Zeigt versteckte Bereiche der Optimierungen
 
-///// texte /////////////////////////////////
-define("TEXT" ,"Kompetente Hilfe");       //Text für beliebige Verwendung
-define("TEXT2" ,"Ihr Installateur: ");       //Text für beliebige Verwendung
-define("KENNUNG", "heizung");     //Kennung entsprechend der Tabellen in der DB
-define("CHEF", "Herr Frank Hofmann");     //Ansprechpartner
-define("FIRMA", "Heizungs- und Sanit&auml;rinstallation Frank Hofmann");     //Firmenname
 
-define("ORDNER", "heizungs_hofmann/");     //Ordner für Bilddateien
-
-///// Höhen /////////////////////////////////
-define("HEIGHT", "50");          //Zahl für eine Höhe
-define("HEIGHT2", "150");          //Zahl für eine Höhe
-define("HEIGHT3", "400");          //Zahl für eine Höhe
+///// HÃ¶hen /////////////////////////////////
+define("HEIGHT", "50");          //Zahl fÃ¼r eine HÃ¶he
+define("HEIGHT2", "150");          //Zahl fÃ¼r eine HÃ¶he
+define("HEIGHT3", "400");          //Zahl fÃ¼r eine HÃ¶he
 
 ///// Sicherheit /////////////////////////////////
 define("PWD", 5);          //Mindeststellen beim Passwort
-define("SECRET", 9);   //Schlüssel zum ver/entschlüsseln in der eigenen Verschlüsselungs-Methode
+define("SECRET", 9);   //SchlÃ¼ssel zum ver/entschlÃ¼sseln in der eigenen VerschlÃ¼sselungs-Methode
 
 ///// Datum/Zeit /////////////////////////////////
 $def_datum_db= date("Y-m-d", time()); //Aktuelles datum im DB-Format
@@ -43,38 +35,38 @@ define("MAXPAGE2", 24);          //Anzahl
 define("MAXPAGE3", 5);          //Anzahl
 
 ///// Grafik /////////////////////////////////
-define("BILDMAX" ,150);     //Maximale Bildgröße in Pixel
-define("BILDQUALI" ,75);     //Bildqualität für jpg
-define("BILDMAX2" ,1024);     //Maximale Bildgröße in Pixel
-define("BILDQUALI2" ,95);     //Bildqualität für jpg
-define("BILDMAX3" ,800);     //Maximale Bildgröße in Pixel
-define("BILDMAX4" ,600);     //Maximale Bildgröße in Pixel
-define("BILDMAX5" ,200);     //Maximale Bildgröße in Pixel
-define("BILDMAX6" ,160);     //Maximale Bildgröße in Pixel
-define("BILDQUALI3" ,95);     //Bildqualität für jpg
+define("BILDMAX" ,150);     //Maximale BildgrÃ¶ÃŸe in Pixel
+define("BILDQUALI" ,75);     //BildqualitÃ¤t fÃ¼r jpg
+define("BILDMAX2" ,1024);     //Maximale BildgrÃ¶ÃŸe in Pixel
+define("BILDQUALI2" ,95);     //BildqualitÃ¤t fÃ¼r jpg
+define("BILDMAX3" ,800);     //Maximale BildgrÃ¶ÃŸe in Pixel
+define("BILDMAX4" ,600);     //Maximale BildgrÃ¶ÃŸe in Pixel
+define("BILDMAX5" ,200);     //Maximale BildgrÃ¶ÃŸe in Pixel
+define("BILDMAX6" ,160);     //Maximale BildgrÃ¶ÃŸe in Pixel
+define("BILDQUALI3" ,95);     //BildqualitÃ¤t fÃ¼r jpg
 
 
 define("BILDMENGE", 3000);          //maximale Datenmenge in KB
 
 ///// Kommunikation /////////////////////////////////
-define("EMAIL" ,"info@heizungs-hofmann.de");   //Standard E-Mail Adresse
-define("EMAILA" ,"info");   //Standard E-Mail Adresse Teil vor dem @
-define("EMAILB" ,"heizungs-hofmann.de");   //Standard E-Mail Adresse Teil nach dem @
-define("MOBIL" ,"0176-40029271");    //Standard-Handy-Nummer
-define("WWW" ,"www.heizungs-hofmann.de");    //Standard Internet-Domain
-define("DOMAIN" ,"heizungs-hofmann.de");    //Standard Internet-Domain
-define("TELEFON" ,"034203-43099");    //Standard Telefonnummer
-define("FAX" ,"034203-44927");    //Standard Faxnummer
+define("EMAIL" ,"s137113@hft-leipzig.de");   //Standard E-Mail Adresse
+define("EMAILA" ,"s137113");   //Standard E-Mail Adresse Teil vor dem @
+define("EMAILB" ,"hft-leipzig.de");   //Standard E-Mail Adresse Teil nach dem @
+define("MOBIL" ,"01805552121");    //Standard-Handy-Nummer
+define("WWW" ,"www.hft-leipzig.de");    //Standard Internet-Domain
+define("DOMAIN" ,"hft-leipzig.de");    //Standard Internet-Domain
+define("TELEFON" ,"");    //Standard Telefonnummer
+define("FAX" ,"");    //Standard Faxnummer
 
 ///// Tabellen ///////////////////////////////
-define("TABLE", "100%");          //Zahl für beliebige Verwendung
-define("TABLE2", 800);          //Zahl für beliebige Verwendung
-define("TABLE3", 965);          //Zahl für beliebige Verwendung
-define("TABLE4", 400);          //Zahl für beliebige Verwendung
-define("TABLEPADDING", "0");          //Zahl für beliebige Verwendung
-define("TABLESPACING", "0");          //Zahl für beliebige Verwendung
-define("TABLEPADDING2", "3");          //Zahl für beliebige Verwendung
-define("TABLESPACING2", "3");          //Zahl für beliebige Verwendung
+define("TABLE", "100%");          //Zahl fÃ¼r beliebige Verwendung
+define("TABLE2", 800);          //Zahl fÃ¼r beliebige Verwendung
+define("TABLE3", 965);          //Zahl fÃ¼r beliebige Verwendung
+define("TABLE4", 400);          //Zahl fÃ¼r beliebige Verwendung
+define("TABLEPADDING", "0");          //Zahl fÃ¼r beliebige Verwendung
+define("TABLESPACING", "0");          //Zahl fÃ¼r beliebige Verwendung
+define("TABLEPADDING2", "3");          //Zahl fÃ¼r beliebige Verwendung
+define("TABLESPACING2", "3");          //Zahl fÃ¼r beliebige Verwendung
 
 ///// Diverses /////////////////////////////////
 define("PWSTELLEN", 5);          //Stellenanzahl beim PW
@@ -82,21 +74,21 @@ define("VERSAND", "1,01");          //Versandkosten
 define("KONTO", "?????????");          //Kontodaten
 define("BANK", "???????????");          //Kontodaten
 define("BLZ", "???????");          //Kontodaten
-define("FINANZAMT", "Borna");          //Steuernummer
-define("STEUER", "235/232/06397");          //Steuernummer
+define("FINANZAMT", "");          //Steuernummer
+define("STEUER", "");          //Steuernummer
 define("USTEUER", "?????");          //Ust-Ident Nummer
-define("GERICHT", "Amtsgericht Borna");          //Gewerbe
+define("GERICHT", "");          //Gewerbe
 
-define("TRENNER", "&nbsp;|&nbsp;");          //Zahl für eine Höhe
-define("LEERZEICHEN", "&nbsp;&nbsp;");          //Zahl für eine Höhe
-define("LEERZEICHEN2", "&nbsp;");          //Zahl für eine Höhe
+define("TRENNER", "&nbsp;|&nbsp;");          //Zahl fÃ¼r eine HÃ¶he
+define("LEERZEICHEN", "&nbsp;&nbsp;");          //Zahl fÃ¼r eine HÃ¶he
+define("LEERZEICHEN2", "&nbsp;");          //Zahl fÃ¼r eine HÃ¶he
 
 
 
 ///// Ebene Provider/Lokal /////////////////////////////////
-if($_SERVER["SERVER_ADDR"]== "85.214.113.238"  ){ //das ist die IP des Servers bei STRATO
+if($_SERVER["SERVER_ADDR"]== "xxxxx"  ){ //das ist die IP des Servers bei STRATO
     $def_ebene= "";  //weil auf dem Server die Tagesordner (eine extra Ebene) fehlen
-    $def_admintool= "admin/";    //Pfad für Admintool
+    $def_admintool= "admin/";    //Pfad fÃ¼r Admintool
 }else{
     $def_ebene= "../";
     $def_admintool= "../admin/";
@@ -111,7 +103,7 @@ define("DISCLAIMER", "http://www.disclaimer.de/disclaimer.htm");     //Disclaime
 
 
 ///// Sicherheit /////////////////////////////////
-//include_once(EBENE."secret/eingabe.tpl.php5"); //Einbindung verbotenen Zeichen/Wörter zur Systemsicherheit
+//include_once(EBENE."secret/eingabe.tpl.php5"); //Einbindung verbotenen Zeichen/WÃ¶rter zur Systemsicherheit
 
 ///// Ende ////////////////////////////////////////
 
