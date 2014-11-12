@@ -4,7 +4,7 @@
     $_db_host = "geheim";            # Klaus Sein Webhost
     $_db_datenbank = "geheim";
     $_db_username = "geheim";
-    $_db_passwort = "graetzeristdoof";
+    $_db_passwort = "asdf1234";
 
     SESSION_START();
 
