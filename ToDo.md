@@ -1,22 +1,20 @@
 ToDo bzw Inhalte (Ideen?)
 =========================
 
-- [ ] Benutzeranmeldung 
+- [ ] Benutzeranmeldung per htaccess ->Sven @oppi85
 - [ ] Benutzerverwaltung, 3 Rollen, Rechte (Berechtigungen der "schwächeren" User werden vererbt):
   - Mitarbeiter (wird von Admin freigeschalten!): Inhalte erstellen, Bilder hochladen, Laufzeit vorschlagen
   - Content Manager: Inhalte freigeben, Laufzeit freigeben
   - Admin: (Nutzer-) Berechtigungen verwalten, Nutzer anlegen, Backups erstellen/einspielen
-- [ ] Admin-Bereich zur Verwaltung der Benutzer
-- [ ] Verwaltungsbereich der Texte (mittels TinyMCE?) -> Oli
-  - [ ] Texte Ã¤ndern
+- [ ] Admin-Bereich zur Verwaltung der Benutzer (htaccess-zugriff)
+  - [ ] Texte Ändern
   - [ ] Texte re-aktivieren und deaktivieren
-- [ ] Bilder einfÃ¼gen implementieren (müssen irgendwo hochgeladen und archiviert werden)-> Micha
-- [ ] Bildergalerie -> Micha
-- [x] Serverspace fÃ¼r Bilder -> Klaus @zottelbeyer
-- [ ] Slideshow der InfoSÃ¤ule -> Marcel @s137129, automatischer Inhaltswechsel mittels Javascript
-  - [ ] Vorschau (am unteren Rand) der nÃ¤chsten Slideshowinhalte
-  - [ ] Grafische AusschmÃ¼ckung
-- [x] CSS implementieren -> Vollbild, daher unnÃ¶tig
+- [x] Bilder einfügen implementieren (müssen irgendwo hochgeladen und archiviert werden)-> Oli
+- [x] Serverspace für Bilder -> Klaus @zottelbeyer
+- [ ] Slideshow der InfoSäule -> Marcel @s137129, automatischer Inhaltswechsel mittels Javascript 
+  - [ ] Vollbild mittel lightbox?
+  - [ ] Vorschau (am unteren Rand) der nächsten Slideshowinhalte
+  - [ ] Grafische Ausschmückung
 - [ ] Willkommensseite
 
 
