@@ -1,36 +1,33 @@
 <?php
 
 $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
+//Dateiendung extrahieren
+$teile =explode(".",$_FILES['datei']['name']);
+$endung =".".$teile[1];
+//echo "Endung: ".$endung."<br>";
+
+//Dateipraefix generieren
+date_default_timezone_set('Europe/Berlin');
+$fileprefix=date("Ymd_Hms")."-".$_POST['username'];
 
 if($dateityp[2] != 0)
   {
-	   		//Dateiendung und Groesse in Byte ueberpruefen
-	   		if($_FILES['datei']['size'] <  102400)
+	   		//Groesse in Byte ueberpruefen
+	   		if($_FILES['datei']['size'] <  1024000)
 	   		{ 
-	   			//Aus dem Temp-Ordner in den upload ordner verschieben
-	   			if($_FILES['datei']['tmp_name']= "upload/".$_FILES['datei']['tmp_name'])
-	   			{
-	   				echo "Datei bereits vorhanden";
-	   				move_uploaded_file($_FILES['datei']['tmp_name'], "upload/".$_FILES['datei']['tmp_name']."_Kopie");
-	   			} 
-	   			else
-	   			{
-	   				move_uploaded_file($_FILES['datei']['tmp_name'], "upload/".$_FILES['datei']['tmp_name']);
-	   				echo "Das Bild wurde Erfolgreich nach upload/".$_FILES['datei']['tmp_name']." hochgeladen";
-	   			}
+	   			move_uploaded_file($_FILES['datei']['tmp_name'], "upload/".$fileprefix.$endung);
+	   			echo "Das Bild wurde Erfolgreich nach upload/".$fileprefix.$endung." hochgeladen";
 	   		}
 	   		else
 	   		{
-	   			echo "Das Bild darf nicht größer als 100 kb sein ";
+	   			echo "Das Bild darf nicht größer als 1 MB sein ";
 	   		}	 
    }
 
 else
     {
-    echo "Bitte nur Bilder im Gif bzw. jpg Format hochladen";
+    echo "Bitte nur Bilder im gif bzw. jpg Format hochladen";
     }
-    date_default_timezone_set('Europe/Berlin');
-    $fileprefix=date("Ymd_Hms")."-".$_POST['username'];
-    echo "<br>und so wird das noch: ".$fileprefix;
+   
 ?>
 

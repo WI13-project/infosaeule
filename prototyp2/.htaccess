@@ -1,4 +1,5 @@
-AuthUserFile C:\xampp\htdocs\github\swe\infosaeule\infosaeule\infosaeule\passwd/.htpasswd
+AuthUserFile C:\xampp\htdocs\infosaeule\passwd/.htpasswd
 AuthType Basic
+AuthName "Nutzer: root, Passwort: root"
 AuthName "root"
 require valid-user

@@ -13,7 +13,7 @@
  <br>
 <input type="submit" value="Hochladen">
 </form>
-Nur Bilder bis 100 KB im jpg oder gif-Format!
+Nur Bilder bis 1 MB im jpg oder gif-Format!
 
 <?php
 //echo "Lade neuen Beitrag hoch!";
