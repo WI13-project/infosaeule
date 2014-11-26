@@ -6,13 +6,13 @@ ToDo bzw Inhalte (Ideen?)
   - Mitarbeiter (wird von Admin freigeschalten!): Inhalte erstellen, Bilder hochladen, Laufzeit vorschlagen
   - Content Manager: Inhalte freigeben, Laufzeit freigeben
   - Admin: (Nutzer-) Berechtigungen verwalten, Nutzer anlegen, Backups erstellen/einspielen
-- [ ] Admin-Bereich zur Verwaltung der Benutzer (htaccess-zugriff)
+- [ ] Manager-Bereich zur Verwaltung der Beiträge (htaccess-zugriff)
   - [ ] Texte Ändern
   - [ ] Texte re-aktivieren und deaktivieren
 - [x] Bilder einfügen implementieren (müssen irgendwo hochgeladen und archiviert werden)-> Oli
 - [x] Serverspace für Bilder -> Klaus @zottelbeyer
 - [ ] Slideshow der InfoSäule -> Marcel @s137129, automatischer Inhaltswechsel mittels Javascript 
-  - [ ] Vollbild mittel lightbox?
+  - [ ] Vollbild mittels lightbox?
   - [ ] Vorschau (am unteren Rand) der nächsten Slideshowinhalte
   - [ ] Grafische Ausschmückung
 - [ ] Willkommensseite
