@@ -1,12 +1,20 @@
+
 <html>
 	<head>
 		<title>Nutzerverwaltung</title>
+		<script src="form.js" language="JavaScript" type="text/javascript"></script>
 	</head>
 	<body>
-	<!--<a href="#" onclick="show_add()">Benutzer Hinzuf&uumlgen</a>
-	<a href="#" onclick="show_clr()">Benutzer L&oumlschen</a>-->
-	<form action="user.php" method="post">
-		<table id="add">
+		<form action="user.php" method="post">
+		<div id="head">
+			
+			<a href="#" onclick="javascript:show_add('tbl_add');">
+				<input id="radio_add" type="radio" name="radio_tbl" value="add" checked="true" style="display: none;">Benutzer Hinzuf&uumlgen</a>
+			<a href="#" onclick="javascript:show_clr('tbl_clr');">
+				<input id="radio_clr" type="radio" name="radio_tbl" value="clr" style="display: none;">Benutzer L&oumlschen</a>
+		</div>
+		<div id="tbl_add">
+		<table>
 			<tr> <td><b>Benutzer Hinzuf&uuml;gen</b></td></tr>
 			<tr>
 				<td>Benutzernamen:</td>
@@ -18,8 +26,10 @@
 			</tr>
 			<tr> <td> <input type="submit" name="add" value="Hinzufuegen"></td></tr>
 		</table>
-		<!-- erstmal ausgeblendet, da nicht genutzt -->
-		<table id="clr" style="display:none;">
+		</div>
+		
+		<div id="tbl_clr" style="display:none;">
+		<table>
 			<tr> <td><b>Benutzer L&ouml;schen</b></td></tr>
 			<tr>
 				<td>Benutzernamen:</td>
@@ -28,6 +38,8 @@
 			
 			<tr> <td> <input type="submit" name="remove" value="Loeschen"/></td></tr> 
 		</table>
+		</div>
+		
 	</form>
 	</body>
 </html>
