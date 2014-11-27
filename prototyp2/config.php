@@ -1,3 +1,4 @@
+<?php
 /*
 
 Dies ist die Konfigurationsdatei.
@@ -6,7 +7,7 @@ Hier können alle nötigen Einstellungen vorgenommen werden.
 Bitte achten sie auf die Kommentare hinter den Einstellungen.
 
 */
-<?php
+
 
 $max=10; // maximale Anzahl an News min. 2!!!
 $slidetime = 5; // Bitte ca. 1-2 Sekunde mehr geben, da das laden der seite mit berücksichtigt werden muss
