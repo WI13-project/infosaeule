@@ -1,0 +1,2 @@
+<h1>Zugriff verweigert</h1>
+<br><a href=../index.php>Weiter?</a>

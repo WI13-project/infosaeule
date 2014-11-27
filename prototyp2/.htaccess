@@ -1,4 +1,15 @@
-AuthUserFile C:\xampp\htdocs\infosaeule\passwd/.htpasswd
+#AuthUserFile C:\xampp\htdocs\infosaeule\passwd/.htpasswd
+AuthUserFile D:\xampp\htdocs\passwd/.htpasswd
+AuthGroupFile D:\xampp\htdocs\passwd/.htgroups
 AuthType Basic
-AuthName "Nutzer: root, Passwort: root"
+AuthName "Nutzer: root, Passwort: root, user:user, cm:cm"
 require valid-user
+#admin-zugriff
+<files "form.php">
+AuthName "Administrator script (root:root)"
+require group administratoren
+</files>
+#content manager zugriff
+# oeffentlicher zugriff
+ErrorDocument 500 /errorpages/500.html
+ErrorDocument 401 /errorpages/401.html

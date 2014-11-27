@@ -1,3 +1,6 @@
+<?php
+include("header.php");
+?>
 <h1>Willkommen beim Bild-Upload-Skript</h1>
 <form action="check.php" method="post" enctype="multipart/form-data">
 	<table>
@@ -14,7 +17,3 @@
 <input type="submit" value="Hochladen">
 </form>
 Nur Bilder bis 1 MB im jpg oder gif-Format!
-
-<?php
-//echo "Lade neuen Beitrag hoch!";
-?>
