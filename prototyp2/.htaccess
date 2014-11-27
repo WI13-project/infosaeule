@@ -1,6 +1,8 @@
 #AuthUserFile C:\xampp\htdocs\infosaeule\passwd/.htpasswd
-AuthUserFile D:\xampp\htdocs\passwd/.htpasswd
-AuthGroupFile D:\xampp\htdocs\passwd/.htgroups
+#AuthUserFile D:\xampp\htdocs\passwd/.htpasswd
+AuthUserFile D:\XAMPP\htdocs\github\swe\infosseule\passwd/.htpasswd
+#AuthGroupFile D:\xampp\htdocs\passwd/.htgroups
+AuthGroupFile D:\XAMPP\htdocs\github\swe\infosseule\passwd/.htgroups
 AuthType Basic
 AuthName "Nutzer: root, Passwort: root, user:user, cm:cm"
 require valid-user

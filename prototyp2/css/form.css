@@ -1,0 +1,54 @@
+hr, p, a, h1, h2, h3, h4, h5, h6, body   {margin: 0px;}
+
+
+#admin{
+	border: solid black 0px;
+	text-align: center;
+	padding: 5px;
+	width:  400px;
+	height: 200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#menue ul{
+	padding: 0;
+}
+
+#menue ul li{
+	border: solid black 0px;
+	float: left;
+	list-style: none;
+	display: inline;
+	width: 40%;
+	padding: 2px;
+}
+
+#menue a{
+	border: solid black 0px;
+	display: block;
+	text-decoration: none;
+	width: 100%;
+	color: black;
+}
+
+#tbl_add{
+	border: solid red 0px;
+	position: absolute;
+	width: 350px;
+	height: 120px;
+	margin-top: 24px;
+	padding: 5px;
+	float: left;
+}
+
+#tbl_clr{
+	border: solid blue 0px;
+	position: absolute;
+	width: 350px;
+	height: 120px;
+	margin-top: 24px;
+	padding: 5px;
+	float: left;
+}
+
