@@ -1,9 +1,12 @@
 <?php
+
+                /*$stringposition = strpos($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], "?");
+                if(isset($stringposition))   echo $new_string = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                else   echo $new_string = substr($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], 0, $stringposition);
+
+                echo $new_string;
+                      */
                 include 'config.php';
-                if(isset($_GET["zeile"]))
-                        $zeile=$_GET["zeile"];
-                else
-                        $zeile=1;
                 //echo $zeile;
                 $arr[]=array();
 
@@ -12,8 +15,14 @@
                 // echo $files_count;
                 if($files_count>$max)  $files_count=$max;                                // setzt filescount auf Anzahl max herab, wenn es mehr Bilder sind als erlaubt;
 
+                if(isset($_GET["zeile"]))
+                    if($_GET["zeile"] <$files_count)
+                        $zeile=$_GET["zeile"]+1;
+                    else
+                        $zeile=1;
+                else
+                        $zeile=1;
                 $alledateien = $files;
-
                 foreach ($alledateien as $datei) {
                         $dateiinfo = pathinfo($ordner."/".$datei);
                         $size = ceil(filesize($ordner."/".$datei)/1024);
@@ -23,7 +32,7 @@
                  };
         ?>
 <head>
-<meta http-equiv="refresh" content="<?php echo $slidetime ?>"; URL="./index.php?zeile=<?php echo $zeile+1; ?>">
+<meta http-equiv="refresh" content="<?php echo $slidetime; ?>;URL=<?php echo './view.php?zeile=',$zeile; ?>">
 </head>
 <body height="100%">
 
@@ -61,7 +70,6 @@
                                 //Possition für nächste Bilder
                         $hilfzeile++;
                         if($hilfzeile>$files_count) $hilfzeile=1;
-                        echo  $hilfzeile;
                         ?><center><img alt="<?php echo $arr;?>" src="<?php echo $arr[$hilfzeile]; ?>" width="100" align="middle"></center>
                 </td>
         </tr>
