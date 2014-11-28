@@ -2,20 +2,21 @@ ToDo bzw Inhalte (Ideen?)
 =========================
 
 - [x] Benutzeranmeldung per htaccess ->Sven @oppi85
-- [ ] Benutzerverwaltung, 3 Rollen, Rechte (Berechtigungen der "schwächeren" User werden vererbt, Umsetzung mittels htgroups):
-  - Mitarbeiter (wird von Admin freigeschalten!): Inhalte erstellen, Bilder hochladen, Passwort ändern
-  - Content Manager: Bilder freigeben, Bilder löschen, Anzahl Bilder angeben, Anzeigedauer festlegen
-  - Admin: (Nutzer-) Berechtigungen verwalten, Nutzer anlegen, Nutzer anzeigen, Backups erstellen/einspielen
-- [ ] E-Mail-Benachrichtigungen: Nutzer angelegt, Bild wartet auf Freigabe --> wie Nutzer mit E-Mail verknüpfen?
-- [x] Bilder einfügen implementieren (müssen irgendwo hochgeladen und archiviert werden)-> Oli
-- [x] Serverspace für Bilder -> Klaus @zottelbeyer
-- [ ] Slideshow der InfoSäule -> Marcel @s137129, automatischer Inhaltswechsel mittels Javascript 
+- [ ] Benutzerverwaltung, 3 Rollen, Rechte (Berechtigungen der "schwÃ¤cheren" User werden vererbt, Umsetzung mittels htgroups):
+  - [ ] Mitarbeiter (wird von Admin freigeschalten!): Inhalte erstellen, Bilder hochladen, **Passwort Ã¤ndern** -> Sven @oppi85
+  - [ ] Content Manager: Bilder freigeben, Bilder lÃ¶schen, Anzahl Bilder angeben, Anzeigedauer (global) festlegen -> Sven @oppi85
+  - [ ] Admin: (Nutzer-) Berechtigungen verwalten, Nutzer anlegen, Nutzer anzeigen, Backups erstellen/einspielen -> Sven @oppi85
+- [ ] E-Mail-Benachrichtigungen: Nutzer angelegt, Bild wartet auf Freigabe --> wie Nutzer mit E-Mail verknÃ¼pfen?
+- [x] Bilder einfÃ¼gen implementieren (mÃ¼ssen irgendwo hochgeladen und archiviert werden)-> Oli
+- [x] Serverspace fÃ¼r Bilder -> Klaus @zottelbeyer
+- [x] Slideshow der InfoSÃ¤ule -> Marcel @s137129, automatischer Inhaltswechsel mittels Javascript 
   - [ ] Vollbild mittels lightbox?
-  - [x] Vorschau (am unteren Rand) der nächsten Slideshowinhalte
-  - [ ] Grafische Ausschmückung (Bootstrap?)
+  - [x] Vorschau (am unteren Rand) der nÃ¤chsten Slideshowinhalte
+- [ ] Grafische AusschmÃ¼ckung (Bootstrap?) -> Oli
+- [ ] Logout implementieren -> Oli
 - [ ] Willkommensseite
 
-!Aktuelle Lösung ist im Ordner Prototyp2, läuft ohne Datenbankzugriff über htaccess
+!Aktuelle LÃ¶sung ist im Ordner Prototyp2, lÃ¤uft ohne Datenbankzugriff Ã¼ber htaccess
 !Alles weiterhin modular halten!
 !Bei Unklarheiten bitte nachfragen beim Autor oder anderen wissenden!
 !Die jetzige Seitenstruktur kann so nicht beibehalten werden, da die Aufgaben dies erfordern, das sollte klar sein ;) !
