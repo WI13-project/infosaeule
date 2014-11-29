@@ -16,7 +16,7 @@ ToDo bzw Inhalte (Ideen?)
 - [ ] Logout implementieren -> Oli
 - [ ] Willkommensseite
 
-!Aktuelle Lösung ist im Ordner Prototyp2, läuft ohne Datenbankzugriff über htaccess
+!Aktuelle Lösung ist im Ordner Prototyp2, läuft ohne Datenbankzugriff über htaccess (Einsatz begrenzt, ggf. auf SQLite umsteigen..)
 !Alles weiterhin modular halten!
 !Bei Unklarheiten bitte nachfragen beim Autor oder anderen wissenden!
 !Die jetzige Seitenstruktur kann so nicht beibehalten werden, da die Aufgaben dies erfordern, das sollte klar sein ;) !
