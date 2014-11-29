@@ -5,7 +5,7 @@ hr, p, a, h1, h2, h3, h4, h5, h6, body   {margin: 0px;}
 	border: solid black 0px;
 	text-align: center;
 	padding: 5px;
-	width:  400px;
+	width:  600px;
 	height: 200px;
 	margin-left: auto;
 	margin-right: auto;
@@ -20,8 +20,9 @@ hr, p, a, h1, h2, h3, h4, h5, h6, body   {margin: 0px;}
 	float: left;
 	list-style: none;
 	display: inline;
-	width: 40%;
+	width: 150px;
 	padding: 2px;
+	margin-right: 1px;
 }
 
 #menue a{
@@ -32,23 +33,22 @@ hr, p, a, h1, h2, h3, h4, h5, h6, body   {margin: 0px;}
 	color: black;
 }
 
-#tbl_add{
-	border: solid red 0px;
+.tbl{
+	width: 300px;
+	margin-left: 100px;
+}
+
+.headline{
+	text-decoration: underline;
+	text-align:left;
+}
+
+.user_function{
+	border: solid green 0px;
 	position: absolute;
-	width: 350px;
-	height: 120px;
-	margin-top: 24px;
+	width: 550px;
+	height: 160px;
+	margin-top: 23px;
 	padding: 5px;
 	float: left;
 }
-
-#tbl_clr{
-	border: solid blue 0px;
-	position: absolute;
-	width: 350px;
-	height: 120px;
-	margin-top: 24px;
-	padding: 5px;
-	float: left;
-}
-
