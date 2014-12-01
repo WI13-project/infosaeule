@@ -9,8 +9,8 @@
                 include 'config.php';
                 //echo $zeile;
                 $arr[]=array();
-
-                $files = scandir($ordner);  //Pfad zum View-Ordner ggf. bei änderungen anpassen!
+                //Bilder mit getimagesize (siehe check.php) pruefen!
+                $files = scandir($ordner);  //Pfad zum View-Ordner ggf. bei Ã¤nderungen anpassen!
                 $files_count = count($files)-2; // Minus zwei wegen "." und ".."
                 // echo $files_count;
                 if($files_count>$max)  $files_count=$max;                                // setzt filescount auf Anzahl max herab, wenn es mehr Bilder sind als erlaubt;
@@ -40,7 +40,7 @@
         <tr>
                 <td>
                         <center>
-                                Nächste News
+                                NÃ¤chste News
                         </center>
                 </td>
                 <td>
@@ -67,7 +67,7 @@
                         <tr height="10%">
                 <td >
                         <?php
-                                //Possition für nächste Bilder
+                                //Possition fÃ¼r nÃ¤chste Bilder
                         $hilfzeile++;
                         if($hilfzeile>$files_count) $hilfzeile=1;
                         ?><center><img alt="<?php echo $arr;?>" src="<?php echo $arr[$hilfzeile]; ?>" width="100" align="middle"></center>
