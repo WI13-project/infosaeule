@@ -58,7 +58,7 @@ include("header.php");
 				<td>Passwort wiederholen:</td>
 				<td> <input type="text" name="chg_pwd2"></td>
 			</tr>
-			<tr> <td> <input type="submit" name="add" value="Passwort &Auml;ndern"></td></tr>
+			<tr> <td> <input type="submit" name="change" value="Passwort &Auml;ndern"></td></tr>
 		</table>
 		</div>
 		
@@ -74,7 +74,6 @@ include("header.php");
 			<tr> <td> <input type="submit" name="remove" value="L&ouml;schen"/></td></tr> 
 		</table>
 		</div>
-		
 		
 	</form>
 	</div>
