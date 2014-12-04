@@ -42,7 +42,7 @@ switch($radio_check){
 			if(!$db)
 				die($db->lastErrorMsg());
 				$name = $_POST['new_name'];
-				$pwd = $_POST['new_pwd1'];
+				$pwd = password_hash("".$_POST['new_pwd1']."", PASSWORD_DEFAULT);
 				$mail = $_POST['mail'];
 				$result=$db->querySingle("Select benutzername from user where Benutzername='$name'");
 			
@@ -76,9 +76,10 @@ switch($radio_check){
 			die("Die Passwörter stimmen nicht überein");
 		
 		if($name_ok && $pwd1_ok && $pwd2_ok){
-			$pwd = $_POST['chg_pwd1'];
+			$pwd = password_hash("".$_POST['chg_pwd1']."", PASSWORD_DEFAULT);
 			$user = $_POST['chg_name'];
 			$db = new SQLite3($file);
+				
 			if(!$db)
 				die($db->lastErrorMsg());
 			
@@ -88,6 +89,7 @@ switch($radio_check){
 			}else{
 				echo "Passwort f&uuml;r ".$user." wurde ge&auml;ndert.";
 			}
+			
 			$db ->close();
 		}
 		

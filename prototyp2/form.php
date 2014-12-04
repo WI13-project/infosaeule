@@ -48,11 +48,11 @@ include("header.php");
 			</tr>
 			<tr>
 				<td>Passwort:</td>
-				<td> <input type="text" name="new_pwd1"></td>
+				<td> <input type="password" name="new_pwd1"></td>
 			</tr>
 			<tr>
 				<td>Passwort wiederholen:</td>
-				<td> <input type="text" name="new_pwd2"></td>
+				<td> <input type="password" name="new_pwd2"></td>
 			</tr>
 			<tr> <td> <input type="submit" name="add" value="Hinzuf&uuml;gen"></td></tr>
 		</table>
@@ -68,11 +68,11 @@ include("header.php");
 			</tr>
 			<tr>
 				<td>Neues Passwort:</td>
-				<td> <input type="text" name="chg_pwd1"></td>
+				<td> <input type="password" name="chg_pwd1"></td>
 			</tr>
 			<tr>
 				<td>Passwort wiederholen:</td>
-				<td> <input type="text" name="chg_pwd2"></td>
+				<td> <input type="password" name="chg_pwd2"></td>
 			</tr>
 			<tr> <td> <input type="submit" name="change" value="Passwort &Auml;ndern"></td></tr>
 		</table>
