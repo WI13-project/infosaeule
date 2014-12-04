@@ -6,16 +6,16 @@ hr, p, a, h1, h2, h3, h4, h5, h6, body   {margin: 0px;}
 	text-align: center;
 	padding: 5px;
 	width:  600px;
-	height: 200px;
+	height: 400px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-#menue ul{
+.menue ul{
 	padding: 0;
 }
 
-#menue ul li{
+.menue ul li{
 	border: solid black 0px;
 	float: left;
 	list-style: none;
@@ -25,7 +25,7 @@ hr, p, a, h1, h2, h3, h4, h5, h6, body   {margin: 0px;}
 	margin-right: 1px;
 }
 
-#menue a{
+.menue a{
 	border: solid black 0px;
 	display: block;
 	text-decoration: none;
@@ -47,7 +47,7 @@ hr, p, a, h1, h2, h3, h4, h5, h6, body   {margin: 0px;}
 	border: solid green 0px;
 	position: absolute;
 	width: 550px;
-	height: 160px;
+	height: 300px;
 	margin-top: 23px;
 	padding: 5px;
 	float: left;

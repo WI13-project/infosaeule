@@ -11,7 +11,7 @@ include("header.php");
 	<body>
 		<div id="admin">
 		<form action="user.php" method="post">
-		<div id="menue">
+		<div class="menue">
 			<ul>
 				<li id="a_add" style="background-color: #848484"><a href="#" onclick="javascript:show_add();">
 					<input id="radio_add" type="radio" name="radio_tbl" value="add" checked="true" style="display:none;">Benutzer Hinzuf&uuml;gen</a></li>
@@ -29,6 +29,22 @@ include("header.php");
 			<tr>
 				<td>Benutzernamen:</td>
 				<td> <input type="text" name="new_name"> </td>
+			</tr>
+			<tr>
+				<td>E-Mail Adresse:</td>
+				<td> <input type="text" name="mail"> </td>
+			</tr>
+			<tr>
+				<td>Benutzergruppe:</td>
+				<td > 
+					<div class="menue">
+					<ul>
+						<li><input id="radio_admin" type="radio" name="radio_user_group" value="admin">Administrator</a></li>
+						<li><input id="radio_cm" type="radio" name="radio_user_group" value="cm">Contenmanager</a></li>
+		        		<li><input id="radio_user" type="radio" name="radio_user_group" checked="true" value="user">User</a></li>
+					</ul>
+					</div>
+				</td>
 			</tr>
 			<tr>
 				<td>Passwort:</td>
