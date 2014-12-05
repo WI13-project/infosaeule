@@ -1,4 +1,7 @@
 <?php
+include("header.php");
+
+
 // Erstellt ein thumbnail eines Bildes
 // Ordner unter $speicherordner benötigt ggf. Schreibrechte CHMOD(777)
 
@@ -10,7 +13,7 @@
 function thumbnail($imgfile, $speicherordner="./thumbnail/", $filenameOnly=true)
    {
    //Max. Größe des Thumbnail (Höhe und Breite)
-   $thumbsize = 192;
+   $thumbsize = 300;
 
    //Dateiname erzeugen
    $filename = basename($imgfile);
@@ -80,7 +83,13 @@ function thumbnail($imgfile, $speicherordner="./thumbnail/", $filenameOnly=true)
 
       $source = imagecreatefromgif($imgfile);
       }
+   else if($endung == ".PNG")
+      {
+      imagePNG($thumb,$ordner."temp.PNG");
+      $thumb = imagecreatefrompng($ordner."temp.PNG");
 
+      $source = imagecreatefrompng($imgfile);
+      }
    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 
    //Bild speichern
@@ -138,17 +147,14 @@ else {
                                       $result=$db->querySingle("Select lfdnr from bilder desc limit 1");
 
                 if($result){
-                        echo $result;
-
-
 
                                  $db->exec("INSERT INTO Bilder(name, user, erstzeit, akt_ab, akt_bis,ort,status)
                                  VALUES ('".$_POST['bildname']."', '1', '', '','','upload','0')");
-
+                                 echo "<br><br>Bildatei: upload/".$fileprefix.$endung."<br>";
                                  echo "<img src=\"".thumbnail("upload/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\">";
 
-                                 echo "upload/".$fileprefix.$endung;
-                                 echo "Bild wurde hinzugef&uuml;gt";
+
+                                 echo "<br>Bild wurde hinzugef&uuml;gt";
 
                 $db->close();
 
