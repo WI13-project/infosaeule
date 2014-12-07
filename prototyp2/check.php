@@ -144,16 +144,14 @@ else {
                                          $db = new SQLite3('db/infosaeule.sqlite');
 
                                   if(!$db) die($db->lastErrorMsg());
-                                      $result=$db->querySingle("Select lfdnr from bilder desc limit 1");
 
-                if($result){
+
+                if($db){
 
                                  $db->exec("INSERT INTO Bilder(name, user, erstzeit, akt_ab, akt_bis,ort,status)
-                                 VALUES ('".$_POST['bildname']."', '1', '', '','','upload','0')");
+                                 VALUES ('".$_POST['bildname'].$endung."', '1', '".date("Ymd_Hms")."', '','','upload','0')");
                                  echo "<br><br>Bildatei: upload/".$fileprefix.$endung."<br>";
                                  echo "<img src=\"".thumbnail("upload/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\">";
-
-
                                  echo "<br>Bild wurde hinzugef&uuml;gt";
 
                 $db->close();
