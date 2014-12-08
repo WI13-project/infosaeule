@@ -1,57 +1,117 @@
 <?php
+$db = new SQLite3('db/infosaeule.sqlite');
 
-                /*$stringposition = strpos($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], "?");
-                if(isset($stringposition))   echo $new_string = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                else   echo $new_string = substr($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], 0, $stringposition);
 
-                echo $new_string;
-                      */
-                include 'config.php';
-                //echo $zeile;
-                $arr[]=array();
-                //Bilder mit getimagesize (siehe check.php) pruefen!
-                $files = scandir($ordner);  //Pfad zum View-Ordner ggf. bei änderungen anpassen!
-                $files_count = count($files)-2; // Minus zwei wegen "." und ".."
-                // echo $files_count;
-                if($files_count>$max)  $files_count=$max;                                // setzt filescount auf Anzahl max herab, wenn es mehr Bilder sind als erlaubt;
+$db = new SQLite3('db/infosaeule.sqlite');
 
-                if(isset($_GET["zeile"]))
-                    if($_GET["zeile"] <$files_count)
-                        $zeile=$_GET["zeile"]+1;
-                    else
-                        $zeile=1;
-                else
-                        $zeile=1;
-                $alledateien = $files;
-                foreach ($alledateien as $datei) {
-                        $dateiinfo = pathinfo($ordner."/".$datei);
-                        $size = ceil(filesize($ordner."/".$datei)/1024);
-                        if ($datei != "." && $datei != ".."  && $datei != "_notes" && $dateiinfo['basename'] != "Thumbs.db") {
-                            $arr[]=$dateiinfo['dirname']."/".$dateiinfo['basename'];
-                    };
-                 };
-        ?>
+ if(!$db)die($db->lastErrorMsg());
+ else{
+
+
+
+    $results = $db->query("SELECT name, erstzeit,lfdnr from Bilder where status='1' order by 'lfdnr'");
+if($results)
+  {
+         $i='0';
+         while (($row = $results->fetchArray()) )
+         {
+                 $i++;
+                 echo "<input type='hidden' value='".$row['erstzeit']."-".$row['name']."' name='".$i."' id='pfad".$i."' > ";
+
+         }
+            echo "<input type='hidden' value='".$i."' name='0' id='pfad0'> ";
+
+  }
+
+$db->close();
+}
+
+
+?>
 <head>
-<meta http-equiv="refresh" content="<?php echo $slidetime; ?>;URL=<?php echo './view.php?zeile=',$zeile; ?>">
+<meta http-equiv='refresh' content='1 URL='./view.php?zeile=1'>
+
+<script language="javascript" type="text/javascript">
+
+var max=10;
+var typ = 0;
+var bildrota = 0;
+var anzahl=document.getElementById("pfad0").value;
+var bilder=[];
+for (var i = 1; i<=anzahl; i++){
+       bilder[(i-1)]=document.getElementById(("pfad"+(i))).value;
+        }
+window.setTimeout("start()", 10);
+
+function start() {
+    change = window.setInterval("bildwechsel()", 1000);
+}
+var j=0;
+function bildwechsel () {
+ var bneu=0;
+ var b=0;
+ var maxA=0;
+ if (max <= anzahl) {
+ maxA=max;
+ }
+ else {
+ maxA=anzahl;}
+
+      while (b<maxA)
+      {
+            bneu=j+b;
+            if (bneu>=maxA){
+                 bneu=bneu-maxA;
+                 }
+            if (b==0){
+                 document.getElementById("bild"+(b+1)).src = 'upload/'+ bilder[bneu];
+
+            }
+            else{
+                 document.getElementById("bild"+(b+1)).src = 'thumbnail/'+ bilder[bneu];
+
+            }
+            b++;
+      }
+      j++;
+      b=0;
+      if (j>maxA){
+      j=j-maxA;
+      }
+
+
+         window.clearInterval(change);
+         window.setTimeout("start()", 1000);
+
+
+}
+</script>
+
+
+
+
 </head>
-<body style="height:100%; vertical-align:middle; background-color:black; overflow:hidden">
-<center><table border="0" height="100%" width="100%">
+<body height="100%">
+
+ <center><table border="0" height="100%" width="100%">
         <tr>
                 <td width="10%">
-<center>
-                        <?php
-                        if($zeile>$max) $zeile=1;
-                        $hilfzeile=$zeile;
-                        for($i=1; $i<$files_count; $i++) {
-                        $hilfzeile++;
-                        if($hilfzeile>$files_count) $hilfzeile=1;
-
-                        ?><img alt="<?php echo $arr;?>" src="<?php echo $arr[$hilfzeile]; ?>" width="100%" align="middle"><br>
-                <?php } ?>
-                </center></td>
+                         <center>
+                              <?php
+                                For($j=2;$j<=$i;$j++){
+                                  echo "<img src='thumbnail/20141207_181257-schlange.jpg' width='100%'  style='border: 0px;' id='bild".$j."' align='middle'><br>";
+                                  }
+                              ?>
+                        </center></td>
                 <td width="90%" height="90%">
-                        <center><img alt="<?php echo $arr;?>" src="<?php echo $arr[$zeile]; ?>" width="99%"  align="middle"></center>
+                        <center>
+                        <img src='upload/20141207_181257-schlange.jpg'   style='border: 0px;' id='bild1' width="99%"  align="middle">
+                        </center>
                 </td>
         </tr>
 </table></center>
+
+
+
+
 </body>
