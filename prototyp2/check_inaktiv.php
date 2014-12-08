@@ -52,7 +52,7 @@ if($results)
                  echo "<td><img src='thumbnail/".$row['erstzeit']."-".$row['name']."' alt='".$row['name']."'</td>";
                  echo "<td>".$row['erstzeit']."</td>";
                  echo "<td><input type='radio' name='".$row['lfdnr']."' value='aktivieren'checked>A</td>";
-                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='' > ---</td>";
+                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='' >-</td>";
                  echo "<td><input type='radio' name='".$row['lfdnr']."' value='loeschen'>L</td>";
                  echo "</tr><br>";
          }

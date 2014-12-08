@@ -11,7 +11,7 @@ if (isset($_POST['lb']))
          if($results)
          {
                  while (($row = $results->fetchArray()) )
-                 if ($_POST[$row['lfdnr']]=='loeschen')
+                 if ((isset($_POST[$row['lfdnr']])) && ($_POST[$row['lfdnr']]=='loeschen'))
                  {
 
                          unlink("thumbnail/".$row['erstzeit']."-".$row['name']);
@@ -19,7 +19,7 @@ if (isset($_POST['lb']))
                          $result = $db->querySingle("Delete From Bilder WHERE lfdnr='".$row['lfdnr']."'");
                          if($result)
                          {
-                         echo "Eintrag konnte nicht geupdated werden";
+                         echo "Eintrag konnte nicht gel&ouml;scht werden";
                          }
 
                    }
@@ -30,7 +30,7 @@ if (isset($_POST['lb']))
           if($results)
             {
                    while (($row = $results->fetchArray()) )
-                   if ($_POST[$row['lfdnr']]=='aktivieren')
+                   if ((isset($_POST[$row['lfdnr']])) && ($_POST[$row['lfdnr']]=='aktivieren'))
                    {
                             $result = $db->querySingle("UPDATE Bilder SET status = '1' WHERE lfdnr='".$row['lfdnr']."'");
                           if($result){
@@ -67,7 +67,7 @@ if($results)
                  echo "<td><img src='thumbnail/".$row['erstzeit']."-".$row['name']."' alt='".$row['name']."'</td>";
                  echo "<td>".$row['erstzeit']."</td>";
                  echo "<td><input type='radio' name='".$row['lfdnr']."' value='aktivieren'>A</td>";
-                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='' checked> ---</td>";
+                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='' checked>-</td>";
                  echo "<td><input type='radio' name='".$row['lfdnr']."' value='loeschen'>L</td>";
                  echo "</tr><br>";
          }

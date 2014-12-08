@@ -1,14 +1,14 @@
 <?php
 include("header.php");
 include("cms_links.php");
-echo" <form action='cms_inaktiv.php' method='post' enctype='multipart/form-data'>";
+echo" <form action='cms_neue.php' method='post' enctype='multipart/form-data'>";
 
 $db = new SQLite3('db/infosaeule.sqlite');
 
  if(!$db)die($db->lastErrorMsg());
  else{
 
-  $results = $db->query("SELECT name, erstzeit,lfdnr from Bilder where status='2' order by 'lfdnr'");
+  $results = $db->query("SELECT name, erstzeit,lfdnr from Bilder where status='0' order by 'lfdnr'");
 if($results)
   { echo " <b><h3>zu Löschende Inhalte</h3></b>";
   echo "<table border='1'> ";
@@ -34,7 +34,7 @@ if($results)
   echo "</table> ";
   }
 
-    $results = $db->query("SELECT name, erstzeit,lfdnr from Bilder where status='2' order by 'lfdnr'");
+    $results = $db->query("SELECT name, erstzeit,lfdnr from Bilder where status='0' order by 'lfdnr'");
 if($results)
   { echo " <b><h3>zu aktivierende Inhalte</h3></b>";
   echo "<table border='1'> ";
@@ -64,6 +64,6 @@ $db->close();
 }
 ?>
  <br>
-   <input type="hidden" value="lb" name="lb" >
+   <input type="hidden" value="nb" name="nb" >
  <input type="submit" value="speichern!">
 </form>

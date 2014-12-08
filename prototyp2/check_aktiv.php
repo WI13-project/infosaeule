@@ -17,8 +17,7 @@ if($results)
   echo "<tr><td><b>Name</b></td>";
   echo "<td><b>Bild</b></td>";
   echo "<td><b>Erstellt am</b></td>";
-  echo "<td><b>Aktivieren?</b></td>";
-  echo "<td><b>nichts</b></td></tr>";
+  echo "<td><b>dektivieren?</b></td></tr>";
 
 
          while (($row = $results->fetchArray()) )
@@ -27,8 +26,8 @@ if($results)
                  echo "<tr><td>Bild: ".$row['name']."</td>";
                  echo "<td><img src='thumbnail/".$row['erstzeit']."-".$row['name']."' alt='".$row['name']."'</td>";
                  echo "<td>".$row['erstzeit']."</td>";
-                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='deaktivieren'checked>D</td>";
-                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='' > ---</td>";
+                 echo "<td><input type='checkbox' name='".$row['lfdnr']."' value='deaktivieren'checked>D</td>";
+
 
                  echo "</tr><br>";
          }
