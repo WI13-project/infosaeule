@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/wi13-project/infosaeule.png?label=ready&title=Ready)](https://waffle.io/wi13-project/infosaeule)
 Infosäule
 ==========
 
