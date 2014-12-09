@@ -16,29 +16,33 @@
 	$dbpw = $pwdArray[0];							//Passwörter müssen bereits gehasht sein!
 				
 	// Nutzerpasswort wird überprüft
-	if (password_verify($_POST['passwort'], $dbpw)) {
-	echo "<br>Passw&ouml;rter stimmen &uuml;berein!";
-	$_SESSION['angemeldet'] = true;
+		if (password_verify($_POST['passwort'], $dbpw)) {
+			echo "<br>Passw&ouml;rter stimmen &uuml;berein!";
+			$_SESSION['angemeldet'] = true;
+			
+			//Rolle und Namen des Nutzers in Session speichern
+			$_SESSION['rolle'] = $db->query("SELECT Gruppe FROM user WHERE Benutzername='$username'");
+			$_SESSION['nutzername'] = $username;
 
-	// Weiterleitung zur geschützten Startseite
-	if ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1') {
-	if (php_sapi_name() == 'cgi') {
-	 header('Status: 303 See Other');
-	 }
-	else {
-	 header('HTTP/1.1 303 See Other');
-	 }
+			// Weiterleitung zur geschützten Startseite
+			if ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1') {
+				if (php_sapi_name() == 'cgi') {
+					header('Status: 303 See Other');
+				 }
+				else {
+					header('HTTP/1.1 303 See Other');
+				 }
+			}
+
+		   header('Location: http://'.$hostname.($path == '/' ? '' : $path).'/index.php');
+		   exit;
+		}
 	}
-
-   header('Location: http://'.$hostname.($path == '/' ? '' : $path).'/index.php');
-   exit;
-   }
-  }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
  <head>
-  <title>Geschützter Bereich</title>
+  <title>Gesch&uuml;tzter Bereich</title>
  </head>
  <body>
   <form action="login.php" method="post">

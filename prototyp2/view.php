@@ -1,15 +1,12 @@
 <?php
 $db = new SQLite3('db/infosaeule.sqlite');
 
-
-$db = new SQLite3('db/infosaeule.sqlite');
-
  if(!$db)die($db->lastErrorMsg());
  else{
 
 
 
-    $results = $db->query("SELECT name, erstzeit,lfdnr from Bilder where status='1' order by 'lfdnr'");
+    $results = $db->query("SELECT name, erstzeit,lfdnr FROM bilder WHERE status='1' ORDER BY 'lfdnr'");
 if($results)
   {
          $i='0';

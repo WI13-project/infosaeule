@@ -1,7 +1,9 @@
 <!-- um nach 3 Sekunden zur form.php zurück zu springen -->
 <meta  http-equiv="refresh" content="2; URL=form.php" http-equiv="content-type" content="text/html; charset=utf-8" />
+
 		
 <?php
+include("auth-admin.php");
 $file = "db/infosaeule.sqlite";
 $name_ok = true;
 $pwd1_ok = true;

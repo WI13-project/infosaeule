@@ -1,4 +1,5 @@
 <?php
+include("auth-cm.php");
 ?>
 <h1>Willkommen im ContentManager</h1> <br>
 

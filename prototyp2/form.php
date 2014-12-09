@@ -1,6 +1,7 @@
 
 <?php
 include("header.php");
+include("auth-admin.php");
 ?>
 <html>
 	<head>
