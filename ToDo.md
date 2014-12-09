@@ -2,10 +2,10 @@ ToDo bzw Inhalte (Ideen?)
 =========================
 
 - [x] Benutzeranmeldung per htaccess ->Sven @oppi85
-- [ ] Benutzerverwaltung, 3 Rollen, Rechte (Berechtigungen der "schwächeren" User werden vererbt, Umsetzung mittels htgroups):
-  - [ ] Mitarbeiter (wird von Admin freigeschalten!): Inhalte erstellen, Bilder hochladen, **Passwort ändern** -> Sven @oppi85
+- [x] Benutzerverwaltung, 3 Rollen, Rechte (Berechtigungen der "schwächeren" User werden vererbt, Umsetzung mittels sqlite3):
+  - [x] Mitarbeiter (wird von Admin freigeschalten!): Inhalte erstellen, Bilder hochladen, **Passwort ändern** -> Sven @oppi85
   - [ ] Content Manager: Bilder freigeben, Bilder löschen, Anzahl Bilder angeben, Anzeigedauer (global) festlegen -> Sven @oppi85
-  - [ ] Admin: (Nutzer-) Berechtigungen verwalten, Nutzer anlegen, Nutzer anzeigen, Backups erstellen/einspielen -> Sven @oppi85
+  - [x] Admin: (Nutzer-) Berechtigungen verwalten, Nutzer anlegen, Nutzer anzeigen, Backups erstellen/einspielen -> Sven @oppi85
 - [ ] E-Mail-Benachrichtigungen: Nutzer angelegt, Bild wartet auf Freigabe --> wie Nutzer mit E-Mail verknüpfen?
 - [x] Bilder einfügen implementieren (müssen irgendwo hochgeladen und archiviert werden)-> Oli
 - [x] Serverspace für Bilder -> Klaus @zottelbeyer
@@ -13,7 +13,7 @@ ToDo bzw Inhalte (Ideen?)
   - [ ] Vollbild mittels lightbox?
   - [x] Vorschau (am unteren Rand) der nächsten Slideshowinhalte
 - [ ] Grafische Ausschmückung (Bootstrap?) -> Oli
-- [ ] Logout implementieren -> Oli
+- [x] Logout implementieren -> Oli
 - [ ] Willkommensseite
 
 !Aktuelle Lösung ist im Ordner Prototyp2, läuft ohne Datenbankzugriff über htaccess (Einsatz begrenzt, ggf. auf SQLite umsteigen..)
