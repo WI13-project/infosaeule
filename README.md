@@ -11,4 +11,6 @@ Changes am PHP-Code werden alle 5 Minuten per Cron-Job auf den Webserver geschob
 SCRUM-mäßiges Kanban-Board:
 https://waffle.io/wi13-project/infosaeule
 
+[![Throughput Graph](https://graphs.waffle.io/wi13-project/infosaeule/throughput.svg)](https://waffle.io/wi13-project/infosaeule/metrics) 
+
 
