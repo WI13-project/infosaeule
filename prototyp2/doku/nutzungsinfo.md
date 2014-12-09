@@ -1,9 +1,9 @@
-** Nutzungsinformationen **
+# Nutzungsinformationen
 
-getestet auf:
+### getestet auf:
 * XAMPP 1.8.3 [PHP: 5.5.11]
 
-Standardpasswörter:
+### Standardpasswörter:
 * root : root
 * CManager : contentmanager
 * user : user123
