@@ -1,4 +1,4 @@
-# Nutzungsinformationen **
+# Nutzungsinformationen
 
 ### getestet auf:
 * XAMPP 1.8.3 [PHP: 5.5.11]
