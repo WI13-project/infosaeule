@@ -5,9 +5,10 @@
   <title>Gesch&uuml;tzter Bereich</title>
  </head>
 <html>
-	<body>
+        <body>
     <div class="header">
-     	<a href=index.php>Home</a> <a href=view.php>Bilder ansehen</a> <a href=upload.php>Bilder hochladen</a> <a href=cms.php>Bilder verwalten</a> <a href=form.php>Nutzer anlegen</a> <a href=logout.php>Ausloggen</a>
+             <b><a href=index.php>Home</a> | <a href=view.php>Show</a> | <a href=upload.php>Bild hochladen</a> | <a href=cms.php>CMS</a> | <a href=form.php>Nutzer anlegen</a> || <a href=logout.php>Ausloggen</a>
+             </b>
     </div>
-	</body>
+        </body>
 </html>
