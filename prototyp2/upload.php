@@ -1,4 +1,5 @@
 <?php
+
 include("header.php");
 ?>
 <h1>Willkommen beim Bild-Upload-Skript</h1>

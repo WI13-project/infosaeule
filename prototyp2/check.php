@@ -127,7 +127,9 @@ else
 
 //Dateipraefix generieren
 date_default_timezone_set('Europe/Berlin');
-$user_id = $_SESSION['user_id']; 
+$user_id=$_SESSION['user_id'];
+echo "userid:";
+echo $_SESSION['user_id'];
 if($_POST['bildname'] == "") {
         echo "Bildname darf nicht leer sein!";
         include("upload.php");
@@ -150,7 +152,7 @@ else {
                 if($db){
 
                                  $db->exec("INSERT INTO Bilder(name, user, erstzeit, akt_ab, akt_bis,ort,status)
-                                 VALUES ('".$_POST['bildname'].$endung."', '1', '".date("Ymd_Hms")."', '','','upload','0')");
+                                 VALUES ('".$_POST['bildname'].$endung."', '".$user_id."', '".date("Ymd_Hms")."', '','','upload','0')");
                                  echo "<br><br>Bildatei: upload/".$fileprefix.$endung."<br>";
                                  echo "<img src=\"".thumbnail("upload/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\">";
                                  echo "<br>Bild wurde hinzugef&uuml;gt";

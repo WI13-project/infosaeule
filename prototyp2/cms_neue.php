@@ -35,7 +35,7 @@ if (isset($_POST['nb']))
                    if ((isset($_POST[$row['lfdnr']])) && ($_POST[$row['lfdnr']]=='aktivieren'))
                    {
                             $result = $db->querySingle("UPDATE Bilder SET status = '1' WHERE lfdnr='".$row['lfdnr']."'");
-                          echo "Bild ".$row['name']." wurde aktiviert.<br>";
+                          echo "<br>Bild ".$row['name']." wurde aktiviert.<br>";
                           if($result){
                                   echo "Eintrag konnte nicht geupdated werden";
                           }
