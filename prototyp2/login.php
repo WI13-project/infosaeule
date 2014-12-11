@@ -20,9 +20,9 @@
 			echo "<br>Passw&ouml;rter stimmen &uuml;berein!";
 			$_SESSION['angemeldet'] = true;
 			
-			//Rolle und Namen des Nutzers in Session speichern
+			//Rolle und ID des Nutzers in Session speichern
 			$_SESSION['rolle'] = $db->query("SELECT Gruppe FROM user WHERE Benutzername='$username'");
-			$_SESSION['nutzername'] = $username;
+			$_SESSION['user_id'] = $db->query("SELECT ID FROM user WHERE Benutzername='$username'");
 
 			// Weiterleitung zur geschützten Startseite
 			if ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1') {

@@ -1,5 +1,5 @@
-Nutzername	  | Passwort (hash!) |	Berechtigung | E-Mail
-------------- | -------------    | ------------- | -------------
-root		  | root			|	admin		| admin@server.de
-CManager 	| contentmanager 	| cm			| cm@server.de
-user			| usr123		| user			| user@server.de
+ID	|	Nutzername	  | Passwort (hash!) |	Berechtigung | E-Mail
+----|------------- | -------------    | ------------- | -------------
+1	|	root		  | root			|	admin		| admin@server.de
+2	|	CManager 	| contentmanager 	| cm			| cm@server.de
+3	|	user			| usr123		| user			| user@server.de
