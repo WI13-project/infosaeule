@@ -120,8 +120,9 @@ if($_FILES['datei']['name'] == "")
         }
 else
         {
-        $teile =explode(".",$_FILES['datei']['name']);
-        $endung =".".$teile[1];
+        //$teile =explode(".",$_FILES['datei']['name']);
+		$endung = substr( strrchr(  $_FILES['datei']['name'], "." ) );
+        //$endung =".".$teile[1];
         }
 //echo "Endung: ".$endung."<br>";
 
