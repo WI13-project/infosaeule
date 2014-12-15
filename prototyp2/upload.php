@@ -1,5 +1,5 @@
 <?php
-
+include("auth-user.php");
 include("header.php");
 ?>
 <h1>Willkommen beim Bild-Upload-Skript</h1>
@@ -40,5 +40,4 @@ include("header.php");
  <br>
 <input type="submit" value="Hochladen">
 </form>
-Nur Bilder bis 1 MB im jpg,gif oder png-Format!
 Nur Bilder bis 1 MB im jpg,gif oder png-Format!

@@ -1,4 +1,5 @@
 <?php
+include("auth-user.php");
 include("header.php");
 ?>
 <h1>Willkommen auf der Startseite der Infosaeule</h1>

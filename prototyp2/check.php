@@ -1,4 +1,5 @@
 <?php
+include("auth-user.php");
 include("header.php");
 
 

@@ -1,4 +1,5 @@
 <?php
+include("auth-cm.php");
 include("header.php");
 include("cms_links.php");
 echo" <form action='cms_neue.php' method='post' enctype='multipart/form-data'>";

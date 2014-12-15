@@ -1,6 +1,6 @@
 <?php
-include("header.php");
 include("auth-cm.php");
+include("header.php");
 include("cms_links.php");
 
  $db = new SQLite3('db/infosaeule.sqlite');

@@ -17,7 +17,7 @@
 
         // Nutzerpasswort wird überprüft
                 if (password_verify($_POST['passwort'], $dbpw)) {
-                        echo "<br>Passw&ouml;rter stimmen &uuml;berein!";
+                        //echo "<br>Passw&ouml;rter stimmen &uuml;berein!";
                         $_SESSION['angemeldet'] = true;
 
                         //Rolle und ID des Nutzers in Session speichern
