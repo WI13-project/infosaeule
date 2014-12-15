@@ -55,5 +55,8 @@
    Passwort: <input type="password" name="passwort" /><br />
    <input type="submit" value="Anmelden" />
   </form>
+* root : root <br>
+* CManager : contentmanager <br>
+* user : user123 <br>
  </body>
 </html>

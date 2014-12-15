@@ -122,7 +122,18 @@ if($_FILES['datei']['name'] == "")
 else
         {
         //$teile =explode(".",$_FILES['datei']['name']);
-		$endung = substr( strrchr(  $_FILES['datei']['name'], "." ) );
+		$endung = substr( strrchr( $_FILES['datei']['name'], "." ),1);
+		if ( stristr($endung,'GIF'))
+			$endung = '.gif';
+		elseif ( stristr($endung,'PNG'))
+			$endung = '.png';
+		elseif ( stristr($endung,'JPG'))
+			$endung = '.jpg';
+		else
+			die ("Endung nicht erkannt.");
+		
+		
+		
         //$endung =".".$teile[1];
         }
 //echo "Endung: ".$endung."<br>";
@@ -143,37 +154,33 @@ else {
                                 //Groesse in Byte ueberpruefen
                                 if($_FILES['datei']['size'] <  1024000)
                                 {
-                                        move_uploaded_file($_FILES['datei']['tmp_name'], "upload/".$fileprefix.$endung);
-                                        echo "Das Bild wurde Erfolgreich nach upload/".$fileprefix.$endung." hochgeladen<br>";
-                                        echo "<br><a href=view.php>Bilder ansehen</a>";
-                                         $db = new SQLite3('db/infosaeule.sqlite');
+									move_uploaded_file($_FILES['datei']['tmp_name'], "upload/".$fileprefix.$endung);
+									echo "Das Bild wurde Erfolgreich nach upload/".$fileprefix.$endung." hochgeladen<br>";
+									echo "<br><a href=view.php>Bilder ansehen</a>";
+									$db = new SQLite3('db/infosaeule.sqlite');
 
-                                  if(!$db) die($db->lastErrorMsg());
-
-
-                if($db){
-
-                                 $db->exec("INSERT INTO Bilder(name, user, erstzeit, akt_ab, akt_bis,ort,status)
-                                 VALUES ('".$_POST['bildname'].$endung."', '".$user_id."', '".date("Ymd_Hms")."', '','','upload','0')");
-                                 echo "<br><br>Bildatei: upload/".$fileprefix.$endung."<br>";
-                                 echo "<img src=\"".thumbnail("upload/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\">";
-                                 echo "<br>Bild wurde hinzugef&uuml;gt";
-
-                $db->close();
+									if(!$db) die($db->lastErrorMsg());
 
 
+									if($db)
+									{
+										 $db->exec("INSERT INTO Bilder(name, user, erstzeit, akt_ab, akt_bis,ort,status)
+										 VALUES ('".$_POST['bildname'].$endung."', '".$user_id."', '".date("Ymd_Hms")."', '','','upload','0')");
+										 echo "<br><br>Bildatei: upload/".$fileprefix.$endung."<br>";
+										 echo "<img src=\"".thumbnail("upload/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\">";
+										 echo "<br>Bild wurde hinzugef&uuml;gt";
 
-
-                                }
+										$db->close();
+									}
+								}
                                 else
                                 {
                                         echo "Das Bild darf nicht größer als 1 MB sein ";
                                 }
            }
-
-        else
+		else
                 {
                 echo "Bitte nur Bilder im gif bzw. jpg Format hochladen";
                 }
-}      }
+}
 ?>

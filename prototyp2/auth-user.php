@@ -1,6 +1,7 @@
 <?php
-     session_start();
-
+     //Check ob Session besteht, sonst starten
+	if (!isset($_SESSION)) session_start();
+	
      $hostname = $_SERVER['HTTP_HOST'];
      $path = dirname($_SERVER['PHP_SELF']);
 
