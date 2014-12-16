@@ -40,8 +40,6 @@ $db->close();
 
 ?>
 <head>
-<meta http-equiv='refresh' content='1 URL='./view.php?zeile=1'>
-
 <script language="javascript" type="text/javascript">
 
 var max=document.getElementById("p1").value;
@@ -115,20 +113,16 @@ function bildwechsel () {
                          <center>
                               <?php
 
-                                For($j=2;($j<=$i) && ($j<=$maxA);$j++){
-                                  echo "<img src='thumbnail/muster.jpg' width='100%'  style='border: 0px;' id='bild".$j."' align='middle'><br>";
+                                For($j=2;($j<=$i-1) && ($j<=$maxA);$j++){
+                                  echo "<img src='thumbnail/temp.jpg' width='100%'  style='border: 0px;' id='bild".$j."' align='middle'><br>";
                                   }
                               ?>
                         </center></td>
                 <td width="90%" height="90%">
                         <center>
-                        <img src='upload/muster.jpg'   style='border: 0px;' id='bild1' width="99%"  align="middle">
+                        <img src='upload/temp.gif'   style='border: 0px;' id='bild1' width="99%"  align="middle">
                         </center>
                 </td>
         </tr>
 </table></center>
-
-
-
-
 </body>
