@@ -1,5 +1,5 @@
 <!-- um nach 3 Sekunden zur form.php zurück zu springen -->
-<meta  http-equiv="refresh" content="2; URL=form.php" http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta  http-equiv="refresh" content="0; URL=form.php" http-equiv="content-type" content="text/html; charset=utf-8" />
 
 		
 <?php
@@ -9,6 +9,7 @@ $name_ok = true;
 $pwd1_ok = true;
 $pwd2_ok = true;
 $mail_ok = true;
+$msg = "Folgende Fehler sind aufgetreten:".'\n\n';
 $radio_check = $_POST['radio_tbl'];
 $group = $_POST['radio_user_group'];
 
@@ -19,23 +20,34 @@ switch($radio_check){
 		
 		//Prüfen ob die Textfelder beschrieben sind
 		if($_POST['new_name']==""){
-			echo "Keinen Benutzernamen eingegeben! <br>";
+			$msg .= "Keinen Benutzernamen eingegeben!".'\n';
 			$name_ok = false;
 		}
 		if($_POST['mail']==""){
-			echo "Keine E-Mail Adresse eingegeben! <br>";
+			$msg .="Keine E-Mail Adresse eingegeben!".'\n';
 			$mail_ok = false;
 		}
 		if ($_POST['new_pwd1']=="") {
-			echo "Kein Passwort eingegeben! <br>";
+			$msg .= "Kein Passwort eingegeben! ".'\n';
 			$pwd1_ok = false;
 		}
 		if ($_POST['new_pwd2']==""){
-			echo "Bitte Passwort wiederholen";
+			$msg .= "Bitte Passwort wiederholen";
 			$pwd2_ok = false;
 		}
-		if ($_POST['new_pwd1'] != $_POST['new_pwd2'])
-				die("Die Passwörter stimmen nicht überein");
+		if(!$name_ok || !$pwd1_ok || !$pwd2_ok || !$mail_ok){
+			echo '<script language="javascript">
+					alert("'.$msg.'");
+					</script>';
+			exit;
+		}
+		
+		if ($_POST['new_pwd1'] != $_POST['new_pwd2']){
+			echo '<script language="javascript">
+					alert(unescape("Die Pass%F6wrter stimmen nicht %FCberein"));
+					</script>';
+		}
+						
 		
 		//Neuen Benutzer eintragen
 		if($name_ok && $pwd1_ok && $pwd2_ok){
@@ -49,11 +61,15 @@ switch($radio_check){
 				$result=$db->querySingle("Select benutzername from user where Benutzername='$name'");
 			
 			if($result){
-				echo "Benutzername ist schon vorhanden";
+				echo '<script language="javascript">
+						alert("Der Benutzer ist schon vorhanden");
+					</script>';
 			}else{		
 				$db->exec("INSERT INTO user(Benutzername, Passwort, Gruppe, EMail)
 				VALUES ('$name', '$pwd', '$group', '$mail');");
-				echo "Benutzer wurde hinzugef&uuml;gt";		
+				echo '<script language="javascript">
+						alert(unescape("Benutzer wurde hinzugef%FCgt"));
+					</script>';
 			}
 			$db->close();
 		}
@@ -63,37 +79,56 @@ switch($radio_check){
 // ----- Passwort ändern ----- 
 	case 'pwd_change':
 		if($_POST['chg_name']==""){
-			echo "Keinen Benutzernamen eingegeben! <br>";
+			$msg .= "Keinen Benutzernamen eingegeben!".'\n';
 			$name_ok = false;
 		}
 		if ($_POST['chg_pwd1']=="") {
-			echo "Kein Passwort eingegeben! <br>";
+			$msg .= "Kein Passwort eingegeben! ".'\n';
 			$pwd1_ok = false;
 		}
 		if ($_POST['chg_pwd2']==""){
-			echo "Bitte Passwort wiederholen";
+			$msg .= "Bitte Passwort wiederholen";
 			$pwd2_ok = false;
 		}
-		if ($_POST['chg_pwd1'] != $_POST['chg_pwd2'])
-			die("Die Passwörter stimmen nicht überein");
 		
-		if($name_ok && $pwd1_ok && $pwd2_ok){
+		if(!$name_ok || !$pwd1_ok || !$pwd2_ok){
+			echo '<script language="javascript">
+					alert("'.$msg.'");
+				</script>';
+			exit;
+		}
+		if ($_POST['chg_pwd1'] != $_POST['chg_pwd2']){
+			echo '<script language="javascript">
+					alert(unescape("Die Passw%F6rter stimmen nicht %FCberein"));
+				</script>';
+			exit;
+		}
+		
+		//if($name_ok && $pwd1_ok && $pwd2_ok){
 			$pwd = password_hash("".$_POST['chg_pwd1']."", PASSWORD_DEFAULT);
 			$user = $_POST['chg_name'];
 			$db = new SQLite3($file);
-				
+			
+			
 			if(!$db)
 				die($db->lastErrorMsg());
 			
 			$result = $db->querySingle("UPDATE user SET Passwort='$pwd' where Benutzername='$user'");
 			if($result){
-				die("Der Benutzername ".$user." ist nicht vorhanden.");
+				$msg .= "Der Benutzername ".$user." ist nicht vorhanden.";
+				echo '<script language="javascript">
+						alert("'.$msg.'");
+					</script>';
 			}else{
-				echo "Passwort f&uuml;r ".$user." wurde ge&auml;ndert.";
+				$msg .= "Passwort f%FCr ".$user." wurde ge%E4ndert.";
+				echo '<script language="javascript">
+						alert(unescape("'.$msg.'"));
+					</script>';
+				exit;
 			}
 			
 			$db ->close();
-		}
+		//}
 		
 	break;
 // ----- Passwort ändern Ende ----- 
@@ -101,7 +136,11 @@ switch($radio_check){
 // ---- Benutzer löschen ----
 	case 'clr':
 		if($_POST['user']==""){
-			die("Keinen Benutzernamen eingegeben! <br>");
+			$msg .= "Keinen Benutzernamen angegeben";
+			echo '<script language="javascript">
+						alert(unescape("'.$msg.'"));
+					</script>';
+				exit;
 		}
 	
 		$db = new SQLite3($file);
@@ -111,9 +150,17 @@ switch($radio_check){
 		$name = $_POST['user'];
 		$result = $db->querySingle("DELETE FROM user where Benutzername='$name'");
 		if($result){
-			echo "Benutzer ".$name." wurde nicht gefunden";
+			$msg .= "Benutzer ".$name." wurde nicht gefunden";
+			echo '<script language="javascript">
+					alert(unescape("'.$msg.'"));
+				</script>';
+			exit;
 		}else{
-			echo "Benutzer ".$name." wurde gel&ouml;scht";
+			$msg .= "Benutzer ".$name." wurde gel%F6scht";
+			echo '<script language="javascript">
+					alert(unescape("'.$msg.'"));
+				</script>';
+			exit;
 		}
 		$db->close();
 	break;
