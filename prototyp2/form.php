@@ -6,29 +6,32 @@ include("header.php");
 	<head>
 		<title>Nutzerverwaltung</title>
 		<script language="JavaScript" type="text/javascript" src="js/form.js" ></script>
-		<link rel="stylesheet" type="text/css" href="css/form.css">
+		<!--<link rel="stylesheet" type="text/css" href="css/form.css">-->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
+		<div class="container">
+		<h1>Willkommen bei der Nutzerverwaltung</h1>
 		<div id="admin">
 		<form action="user.php" method="post">
 		<div class="menue">
-			<ul>
-				<li id="a_add" style="background-color: #848484"><a href="#" onclick="javascript:show_add();">
+			<ul class="nav nav-tabs">
+				<li class="active" id="a_add" ><a href="#" onclick="javascript:show_add();">
 					<input id="radio_add" type="radio" name="radio_tbl" value="add" checked="true" style="display:none;">Benutzer Hinzuf&uuml;gen</a></li>
-				<li id="a_pwd_change" style="background-color: #D8D8D8"><a href="#" onclick="javascript:show_pwd_change();">
+				<li id="a_pwd_change" ><a href="#" onclick="javascript:show_pwd_change();">
 					<input id="radio_pwd_change" type="radio" name="radio_tbl" value="pwd_change" style="display: none;">Passwort &Auml;ndern</a></li>
-        		<li id="a_clr" style="background-color: #D8D8D8"><a href="#" onclick="javascript:show_clr();">
+        		<li id="a_clr" ><a href="#" onclick="javascript:show_clr();">
 					<input id="radio_clr" type="radio" name="radio_tbl" value="clr" style="display: none;">Benutzer L&ouml;schen</a></li>
 			</ul>
 		</div>
 		
 		<!-- Benutzer hinzufügen -->
-		<div id="tbl_add" class="user_function" style="background-color: #848484">
+		<div id="tbl_add" class="user_function" >
 		<table class="tbl">
 			<tr > <th class="headline" colspan="2"><b>Benutzer Hinzuf&uuml;gen</b></th></tr>
 			<tr>
 				<td>Benutzernamen:</td>
-				<td> <input type="text" name="new_name"> </td>
+				<td> <input id="add_name" type="text" name="new_name" autofocus> </td>
 			</tr>
 			<tr>
 				<td>E-Mail Adresse:</td>
@@ -38,7 +41,7 @@ include("header.php");
 				<td>Benutzergruppe:</td>
 				<td > 
 					<div class="menue">
-					<ul>
+					<ul  style="list-style: none;">
 						<li><input id="radio_admin" type="radio" name="radio_user_group" value="admin">Administrator</a></li>
 						<li><input id="radio_cm" type="radio" name="radio_user_group" value="cm">Contenmanager</a></li>
 		        		<li><input id="radio_user" type="radio" name="radio_user_group" checked="true" value="user">User</a></li>
@@ -64,7 +67,7 @@ include("header.php");
 			<tr > <th class="headline" colspan="2"><b>Passwort &Auml;ndern</b></th></tr>
 			<tr>
 			<td>Benutzernamen:</td>
-				<td> <input type="text" name="chg_name"> </td>
+				<td> <input id="chg_name" type="text" name="chg_name"> </td>
 			</tr>
 			<tr>
 				<td>Neues Passwort:</td>
@@ -84,7 +87,7 @@ include("header.php");
 			<tr > <th class="headline" colspan="2"><b>Benutzer L&ouml;schen</b></th></tr>
 			<tr>
 				<td>Benutzernamen:</td>
-				<td> <input type="text" name="user"> </td>
+				<td> <input id="clr_name" type="text" name="user"> </td>
 			</tr>
 			
 			<tr> <td> <input type="submit" name="remove" value="L&ouml;schen"/></td></tr> 
@@ -93,5 +96,10 @@ include("header.php");
 		
 	</form>
 	</div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
 	</body>
 </html>

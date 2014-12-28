@@ -46,17 +46,27 @@
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
- <head>
-  <title>Gesch&uuml;tzter Bereich</title>
- </head>
- <body>
-  <form action="login.php" method="post">
-   Username: <input type="text" name="username" /><br />
-   Passwort: <input type="password" name="passwort" /><br />
-   <input type="submit" value="Anmelden" />
-  </form>
-* root : root <br>
-* CManager : contentmanager <br>
-* user : user123 <br>
- </body>
+<head>
+	<title>Gesch&uuml;tzter Bereich</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/login.css" rel="stylesheet">
+</head>
+
+<body>
+	
+	<div class="container">
+	<form class="form-signin" action="login.php" method="post">
+		<h2 class="form-signin-heading">Bitte loggen Sie sich ein</h2>
+   		<label for="inputUsername" class="sr-only">Username:</label> 
+   		<input type="text" id="inputUsername" class="form-control" placeholder="Benutzername" name="username" required autofocus>
+   		<lable for="inputPassword" class="sr-only">Passwort:</lable> 
+   		<input type="password" id="inputPassword" class="form-control" placeholder="Passwort" name="passwort" required>
+   		<button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
+  	</form>
+  	</div>
+	* root : root <br>
+	* CManager : contentmanager <br>
+	* user : user123 <br>
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
 </html>

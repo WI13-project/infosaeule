@@ -2,6 +2,15 @@
 include("auth-user.php");
 include("header.php");
 ?>
+<html>
+<head>
+	<title></title>
+	
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		
 <h1>Willkommen beim Bild-Upload-Skript</h1>
 <form action="check.php" method="post" enctype="multipart/form-data">
         <table>
@@ -41,3 +50,11 @@ include("header.php");
 <input type="submit" value="Hochladen">
 </form>
 Nur Bilder bis 1 MB im jpg,gif oder png-Format!
+
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
