@@ -56,17 +56,20 @@
 	
 	<div class="container">
 	<form class="form-signin" action="login.php" method="post">
-		<h2 class="form-signin-heading">Bitte loggen Sie sich ein</h2>
+		<h3 class="form-signin-heading">Bitte loggen Sie sich ein</h3>
    		<label for="inputUsername" class="sr-only">Username:</label> 
    		<input type="text" id="inputUsername" class="form-control" placeholder="Benutzername" name="username" required autofocus>
-   		<lable for="inputPassword" class="sr-only">Passwort:</lable> 
+   		<label for="inputPassword" class="sr-only">Passwort:</label> 
    		<input type="password" id="inputPassword" class="form-control" placeholder="Passwort" name="passwort" required>
    		<button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
   	</form>
-  	</div>
+	<div class="jumbotron">
+	<p>
 	* root : root <br>
 	* CManager : contentmanager <br>
 	* user : user123 <br>
+	</p>
+	</div>
 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

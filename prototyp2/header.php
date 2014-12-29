@@ -8,9 +8,8 @@
  </head>
 <html>
 <body>
-
-	<div class="container">
-		<nav class="navbar navbar-default">
+<div class="container">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
 		    	<div id="navbar" class="navbar-collapse collapse">  
 		    		<ul class="nav navbar-nav">
@@ -23,17 +22,19 @@
 		    			<li>
 		    				<a href=upload.php>Bild hochladen</a>
 		    			</li>
-		    			<li>
-		    				<a href=cms.php>CMS</a>
-		    			</li>
-		    			<li>
-		    				<a href=form.php>Nutzer anlegen</a>
-		    			</li>
+						<?php
+						if($_SESSION['rolle'] == 'admin' || $_SESSION['rolle'] == 'cm') {
+							echo "<li><a href=cms.php>Inhalte verwalten</a></li>";
+						}
+		    			if($_SESSION['rolle'] == 'admin') {
+							echo "<li><a href=form.php>Nutzer verwalten</a></li>";
+		    			}
+						?>						
 		    			
 		    		</ul>			
 					<ul class="nav navbar-nav navbar-right">
 		    			<li>
-							<a><?php echo "Sie sind eingeloggt als: ".$_SESSION['rolle']; ?></a>
+							<p class="navbar-text"><?php echo "Sie sind eingeloggt als: ".$_SESSION['rolle']; ?></p>
 		    			</li>
 		    			<li>
 		    				<a href=logout.php>Ausloggen</a>
@@ -45,7 +46,7 @@
 		</nav>  	
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 </body>

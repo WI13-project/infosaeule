@@ -21,3 +21,6 @@ a.nav-item:hover{
 	font-weight: bold;
 	color: white;
 }
+body { 
+	padding-top: 70px; 
+}
