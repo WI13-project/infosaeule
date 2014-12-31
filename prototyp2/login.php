@@ -63,13 +63,7 @@
    		<input type="password" id="inputPassword" class="form-control" placeholder="Passwort" name="passwort" required>
    		<button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
   	</form>
-	<div class="jumbotron">
-	<p>
-	* root : root <br>
-	* CManager : contentmanager <br>
-	* user : user123 <br>
-	</p>
-	</div>
+	
 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
