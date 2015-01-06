@@ -5,7 +5,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
+	<div id="cms_inaktiv" class="container">
 <?php
 include("auth-cm.php");
 include("header.php");

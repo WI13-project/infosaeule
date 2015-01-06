@@ -36,16 +36,15 @@ switch($radio_check){
 			$pwd2_ok = false;
 		}
 		if(!$name_ok || !$pwd1_ok || !$pwd2_ok || !$mail_ok){
-			echo '<script language="javascript">
+			die( '<script language="javascript">
 					alert("'.$msg.'");
-					</script>';
-			exit;
+					</script>');
 		}
 		
 		if ($_POST['new_pwd1'] != $_POST['new_pwd2']){
-			echo '<script language="javascript">
+			die( '<script language="javascript">
 					alert(unescape("Die Pass%F6wrter stimmen nicht %FCberein"));
-					</script>';
+					</script>');
 		}
 						
 		
@@ -61,15 +60,15 @@ switch($radio_check){
 				$result=$db->querySingle("Select benutzername from user where Benutzername='$name'");
 			
 			if($result){
-				echo '<script language="javascript">
+				die( '<script language="javascript">
 						alert("Der Benutzer ist schon vorhanden");
-					</script>';
+					</script>');
 			}else{		
 				$db->exec("INSERT INTO user(Benutzername, Passwort, Gruppe, EMail)
 				VALUES ('$name', '$pwd', '$group', '$mail');");
-				echo '<script language="javascript">
+				die( '<script language="javascript">
 						alert(unescape("Benutzer wurde hinzugef%FCgt"));
-					</script>';
+					</script>');
 			}
 			$db->close();
 		}
@@ -92,16 +91,14 @@ switch($radio_check){
 		}
 		
 		if(!$name_ok || !$pwd1_ok || !$pwd2_ok){
-			echo '<script language="javascript">
+			die( '<script language="javascript">
 					alert("'.$msg.'");
-				</script>';
-			exit;
+				</script>');
 		}
 		if ($_POST['chg_pwd1'] != $_POST['chg_pwd2']){
-			echo '<script language="javascript">
+			die( '<script language="javascript">
 					alert(unescape("Die Passw%F6rter stimmen nicht %FCberein"));
-				</script>';
-			exit;
+				</script>');
 		}
 		
 		//if($name_ok && $pwd1_ok && $pwd2_ok){
@@ -116,15 +113,14 @@ switch($radio_check){
 			$result = $db->querySingle("UPDATE user SET Passwort='$pwd' where Benutzername='$user'");
 			if($result){
 				$msg .= "Der Benutzername ".$user." ist nicht vorhanden.";
-				echo '<script language="javascript">
+				die( '<script language="javascript">
 						alert("'.$msg.'");
-					</script>';
+					</script>');
 			}else{
-				$msg .= "Passwort f%FCr ".$user." wurde ge%E4ndert.";
-				echo '<script language="javascript">
+				$msg = "Passwort f%FCr ".$user." wurde ge%E4ndert.";
+				die( '<script language="javascript">
 						alert(unescape("'.$msg.'"));
-					</script>';
-				exit;
+					</script>');
 			}
 			
 			$db ->close();
@@ -137,10 +133,9 @@ switch($radio_check){
 	case 'clr':
 		if($_POST['user']==""){
 			$msg .= "Keinen Benutzernamen angegeben";
-			echo '<script language="javascript">
+			die( '<script language="javascript">
 						alert(unescape("'.$msg.'"));
-					</script>';
-				exit;
+					</script>');
 		}
 	
 		$db = new SQLite3($file);
@@ -151,16 +146,14 @@ switch($radio_check){
 		$result = $db->querySingle("DELETE FROM user where Benutzername='$name'");
 		if($result){
 			$msg .= "Benutzer ".$name." wurde nicht gefunden";
-			echo '<script language="javascript">
+			die( '<script language="javascript">
 					alert(unescape("'.$msg.'"));
-				</script>';
-			exit;
+				</script>');
 		}else{
-			$msg .= "Benutzer ".$name." wurde gel%F6scht";
-			echo '<script language="javascript">
+			$msg = "Benutzer ".$name." wurde gel%F6scht";
+			die( '<script language="javascript">
 					alert(unescape("'.$msg.'"));
-				</script>';
-			exit;
+				</script>');
 		}
 		$db->close();
 	break;

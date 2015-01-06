@@ -9,7 +9,7 @@ include("header.php");
   <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
+	<div id="home" class="container">
 		<h1>Willkommen auf der Startseite der Infosaeule</h1>
 		
 		<a href=upload.php>Bilder hochladen</a><br><br>

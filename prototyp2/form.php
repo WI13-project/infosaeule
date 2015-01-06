@@ -6,11 +6,10 @@ include("header.php");
 	<head>
 		<title>Nutzerverwaltung</title>
 		<script language="JavaScript" type="text/javascript" src="js/form.js" ></script>
-		<!--<link rel="stylesheet" type="text/css" href="css/form.css">-->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
-		<div class="container">
+		<div id="nutzer" class="container">
 		<h1>Willkommen bei der Nutzerverwaltung</h1>
 		<div id="admin">
 		<form action="user.php" method="post">
@@ -91,6 +90,22 @@ include("header.php");
 			</tr>
 			
 			<tr> <td> <input type="submit" name="remove" value="L&ouml;schen"/></td></tr> 
+		</table>
+		<table border="1" style="margin-top: 50px;">
+			<tr>
+				<td width="150px" style="padding: 2px;"><b>Benutzername</b></td>
+				<td width="150px" style="padding: 2px;"><b>Gruppe</b></td>
+			</tr>
+			<?php
+				$db = new SQLite3("db/infosaeule.sqlite");
+				$results = $db->query("SELECT Benutzername, Gruppe FROM user");
+				while ($row = $results->fetchArray()){
+					 echo "<tr><td style='padding: 2px;'>".$row['Benutzername']."</td>";
+					 echo "<td style='padding: 2px;'>".$row['Gruppe']."</td>";
+					 echo "</tr>";
+         		}
+			
+			?>
 		</table>
 		</div>
 		

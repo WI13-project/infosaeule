@@ -9,7 +9,7 @@ include("header.php");
   <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
+	<div id="upload" class="container">
 		
 <h1>Willkommen beim Bild-Upload-Skript</h1>
 

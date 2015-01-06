@@ -3,8 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
  <head>
   <title>Infos&auml;ule</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/nav.css" rel="stylesheet">
+  	<script language="JavaScript" type="text/javascript" src="js/header.js" ></script>
+  	<link href="css/bootstrap.min.css" rel="stylesheet">
+  	<link href="css/nav.css" rel="stylesheet">
  </head>
 <html>
 <body>
@@ -13,21 +14,21 @@
 			<div class="container-fluid">
 		    	<div id="navbar" class="navbar-collapse collapse">  
 		    		<ul class="nav navbar-nav">
-		    			<li>
+		    			<li id="a_home">
 		    				<a href=index.php>Home</a>
 		    			</li>
 		    			<li>
 		    				<a href=view.php>Show</a>
 		    			</li>
-		    			<li>
+		    			<li id="a_upload">
 		    				<a href=upload.php>Bild hochladen</a>
 		    			</li>
 						<?php
 						if($_SESSION['rolle'] == 'admin' || $_SESSION['rolle'] == 'cm') {
-							echo "<li><a href=cms.php>Inhalte verwalten</a></li>";
+							echo "<li id='a_inhalt'><a href=cms.php>Inhalte verwalten</a></li>";
 						}
 		    			if($_SESSION['rolle'] == 'admin') {
-							echo "<li><a href=form.php>Nutzer verwalten</a></li>";
+							echo "<li id='a_nutzer'><a href=form.php>Nutzer verwalten</a></li>";
 		    			}
 						?>						
 		    			
