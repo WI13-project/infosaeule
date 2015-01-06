@@ -1,3 +1,8 @@
+<?php
+include("auth-cm.php");
+include("header.php");
+include("cms_links.php");
+?>
 <html>
 <head>
 	<title></title>
@@ -5,12 +10,9 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div id="cms" class="container">
-	<?php
-include("auth-cm.php");
-include("header.php");
-include("cms_links.php");
 
+<div id="cms" class="container">
+<?php
  $db = new SQLite3('db/infosaeule.sqlite');
 
  if(!$db)die($db->lastErrorMsg());

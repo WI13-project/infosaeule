@@ -1,3 +1,8 @@
+<?php
+include("auth-cm.php");
+include("header.php");
+include("cms_links.php");
+?>
 <html>
 <head>
 	<title></title>
@@ -7,9 +12,6 @@
 <body>
 	<div id="cms_pref" class="container">
 <?php
-include("auth-cm.php");
-include("header.php");
-include("cms_links.php");
 echo" <form action='cms_pref.php' method='post' enctype='multipart/form-data'>";
 
 

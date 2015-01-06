@@ -1,3 +1,8 @@
+<?php
+include("auth-cm.php");
+include("header.php");
+include("cms_links.php");
+?>
 <html>
 <head>
 	<title></title>
@@ -7,9 +12,6 @@
 <body>
 	<div id="cms_neue" class="container">
 <?php
-include("auth-cm.php");
-include("header.php");
-include("cms_links.php");
 $db = new SQLite3('db/infosaeule.sqlite');
 if(!$db)die($db->lastErrorMsg());
  else{
