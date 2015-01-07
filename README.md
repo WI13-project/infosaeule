@@ -5,8 +5,8 @@ Infosäule
 Softwareprojekt zur Entwicklung einer Infosäule.
 https://github.com/WI13-project/infosaeule/releases
 
-Das Projekt ist unter http://web424.webgo24-server6.de/WI13/index.php erreichbar. Alternativ http://ohli.bplaced.net/wi13/prototyp2/index.php
-Die DB läuft auf selbigen Server.
+Das Projekt ist unter http://ohli.bplaced.net/wi13/wi13/prototyp2/ erreichbar.
+Die DB liegt auf selbigem Server.
 Changes am PHP-Code werden alle 5 Minuten per Cron-Job auf den Webserver geschoben.
 
 SCRUM-mäßiges Kanban-Board:
