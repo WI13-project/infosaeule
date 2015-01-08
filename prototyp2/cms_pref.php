@@ -14,8 +14,6 @@ include("cms_links.php");
 <?php
 echo" <form action='cms_pref.php' method='post' enctype='multipart/form-data'>";
 
-
-
 $db = new SQLite3('db/infosaeule.sqlite');
 
  if(!$db)die($db->lastErrorMsg());
@@ -48,24 +46,26 @@ $db = new SQLite3('db/infosaeule.sqlite');
 if($results)
   {
   echo "<b><h3>Allgemeine Einstellungen</h3></b>";
-  echo "<table border='1'>";
-  echo "<tr><td><b>Eigenschaft </b></td>";
-  echo "<td><b>Wert (standard) </b></td>";
-  echo "<td><b>Wert (alt) </b></td>";
-  echo "<td><b>Wert (neu?) </b></td></tr>";
+  echo "<table class='table  table-striped table-bordered'>";
+  echo "<thead><th>Eigenschaft</th>";
+  echo "<th>Wert (standard)</th>";
+  echo "<th><b>Wert (alt) </th>";
+  echo "<th>Wert (neu?) </th></thead>";
+  echo "<tbody>";
         while ($row = $results->fetchArray() )
          {
                  if ($row['lfdnr']=='4') $bgc=$row['value'];
                  echo "<tr><td><b>".$row['con']."</b></td>";
                  echo "<td>".$row['value_s']."</td>";
                  echo "<td>".$row['value']."</td>";
-                 echo "<td><input type='input' value='".$row['value']."' name='".$row['lfdnr']."' ></td>";
-                 echo "</tr><br>";
+                 echo "<td><input class='form-control placeholder='.col-xs-3' type='input' value='".$row['value']."' name='".$row['lfdnr']."' ></td>";
+                 echo "</tr>";
          }
          echo "<tr><td><b>Farbwerte Hintergrund:</b></td>";
          echo "<td bgcolor='000000'>Farbtest</td>";
          echo "<td bgcolor='".$bgc."'>Farbtest</td>";
          echo "<td bgcolor='ffffff'>Farbtest</td></tr>";
+  echo "</tbody>";
   echo "</table>";
   }
 
@@ -74,8 +74,8 @@ $db->close();
 ?>
  <br>
    <input type="hidden" value="pb" name="pb" >
- <input type="submit" value="Standart wiederherstellen" name='standard' >
- <input type="submit" value="speichern!" name='speichern'>
+ <input class="btn btn-default btn-file" type="submit" value="Standart wiederherstellen" name='standard' >
+ <input class="btn btn-default btn-file" type="submit" value="speichern!" name='speichern'>
 </form>
 </div>
 	

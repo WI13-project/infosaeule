@@ -52,7 +52,7 @@ include("header.php");
                 </div>
  <br>
 
-<input type="submit" value="Hochladen">
+<input class="btn btn-default btn-file" type="submit" value="Hochladen">
 </form>
 Nur Bilder bis 1 MB im jpg,gif oder png-Format!
 

@@ -13,7 +13,7 @@ include("header.php");
 		<h1>Willkommen bei der Nutzerverwaltung</h1>
 		<div id="admin">
 		<form action="user.php" method="post">
-		<div class="menue">
+		<div class="menue" style="margin-bottom: 20px;">
 			<ul class="nav nav-tabs">
 				<li class="active" id="a_add" ><a href="#" onclick="javascript:show_add();">
 					<input id="radio_add" type="radio" name="radio_tbl" value="add" checked="true" style="display:none;">Benutzer Hinzuf&uuml;gen</a></li>
@@ -27,14 +27,14 @@ include("header.php");
 		<!-- Benutzer hinzufügen -->
 		<div id="tbl_add" class="user_function" >
 		<table class="tbl">
-			<tr > <th class="headline" colspan="2"><b>Benutzer Hinzuf&uuml;gen</b></th></tr>
+			<tr > <th class="headline" colspan="2"><b><h3>Benutzer Hinzuf&uuml;gen</h3></b></th></tr>
 			<tr>
 				<td>Benutzernamen:</td>
-				<td> <input id="add_name" type="text" name="new_name" autofocus> </td>
+				<td> <input class="form-control" id="add_name" type="text" name="new_name" autofocus> </td>
 			</tr>
 			<tr>
 				<td>E-Mail Adresse:</td>
-				<td> <input type="text" name="mail"> </td>
+				<td> <input class="form-control" type="text" name="mail"> </td>
 			</tr>
 			<tr>
 				<td>Benutzergruppe:</td>
@@ -50,65 +50,72 @@ include("header.php");
 			</tr>
 			<tr>
 				<td>Passwort:</td>
-				<td> <input type="password" name="new_pwd1"></td>
+				<td> <input class="form-control" type="password" name="new_pwd1"></td>
 			</tr>
 			<tr>
 				<td>Passwort wiederholen:</td>
-				<td> <input type="password" name="new_pwd2"></td>
+				<td> <input class="form-control" type="password" name="new_pwd2"></td>
 			</tr>
-			<tr> <td> <input type="submit" name="add" value="Hinzuf&uuml;gen"></td></tr>
+			<tr> <td> <input class="btn btn-default btn-file" type="submit" name="add" value="Hinzuf&uuml;gen"></td></tr>
 		</table>
 		</div>
 		
 		<!-- Passwort ändern -->
 		<div id="tbl_pwd_change" class="user_function" style="display:none;">
 		<table class="tbl">
-			<tr > <th class="headline" colspan="2"><b>Passwort &Auml;ndern</b></th></tr>
+			<tr > <th class="headline" colspan="2"><b><h3>Passwort &Auml;ndern</h3></b></th></tr>
 			<tr>
 			<td>Benutzernamen:</td>
-				<td> <input id="chg_name" type="text" name="chg_name"> </td>
+				<td> <input class="form-control" id="chg_name" type="text" name="chg_name"> </td>
 			</tr>
 			<tr>
 				<td>Neues Passwort:</td>
-				<td> <input type="password" name="chg_pwd1"></td>
+				<td> <input class="form-control" type="password" name="chg_pwd1"></td>
 			</tr>
 			<tr>
 				<td>Passwort wiederholen:</td>
-				<td> <input type="password" name="chg_pwd2"></td>
+				<td> <input class="form-control" type="password" name="chg_pwd2"></td>
 			</tr>
-			<tr> <td> <input type="submit" name="change" value="Passwort &Auml;ndern"></td></tr>
+			<tr> <td> <input class="btn btn-default btn-file" type="submit" name="change" value="Passwort &Auml;ndern"></td></tr>
 		</table>
 		</div>
 		
 		<!-- Benutzer Löschen -->
 		<div id="tbl_clr" class="user_function" style="display:none;">
 		<table class="tbl">
-			<tr > <th class="headline" colspan="2"><b>Benutzer L&ouml;schen</b></th></tr>
+			<tr > <th class="headline" colspan="2"><b><h3>Benutzer L&ouml;schen</h3></b></th></tr>
 			<tr>
 				<td>Benutzernamen:</td>
-				<td> <input id="clr_name" type="text" name="user"> </td>
+				<td> <input class="form-control" id="clr_name" type="text" name="user"> </td>
 			</tr>
 			
-			<tr> <td> <input type="submit" name="remove" value="L&ouml;schen"/></td></tr> 
+			<tr> <td> <input class="btn btn-default btn-file" type="submit" name="remove" value="L&ouml;schen"/></td></tr> 
 		</table>
-		<table border="1" style="margin-top: 50px;">
-			<tr>
-				<td width="150px" style="padding: 2px;"><b>Benutzername</b></td>
-				<td width="150px" style="padding: 2px;"><b>Gruppe</b></td>
-			</tr>
+		
+		</div>
+		<div id="user_table" class="user_function" style="display: none;">
+		<table class="table table-striped table-bordered " style="margin-top: 50px;">
+			<thead>
+				<th>ID</th>
+				<th>Benutzername</th>
+				<th>Gruppe</th>
+			</thead>
+			<tbody>
 			<?php
 				$db = new SQLite3("db/infosaeule.sqlite");
-				$results = $db->query("SELECT Benutzername, Gruppe FROM user");
+				if(!$db)die($db->lastErrorMsg());
+				$results = $db->query("SELECT ID, Benutzername, Gruppe FROM user");
 				while ($row = $results->fetchArray()){
-					 echo "<tr><td style='padding: 2px;'>".$row['Benutzername']."</td>";
-					 echo "<td style='padding: 2px;'>".$row['Gruppe']."</td>";
-					 echo "</tr>";
+					echo "<tr><td>".$row['ID']."</td>";
+					echo "<td>".$row['Benutzername']."</td>";
+					echo "<td>".$row['Gruppe']."</td>";
+					echo "</tr>";
          		}
-			
+				$db->close();
 			?>
+			</tbody>
 		</table>
 		</div>
-		
 	</form>
 	</div>
 	</div>

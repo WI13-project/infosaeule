@@ -48,11 +48,12 @@ echo" <form action='check_aktiv.php' method='post' enctype='multipart/form-data'
   $results = $db->query("SELECT name, erstzeit,lfdnr from Bilder where status='1' order by 'lfdnr'");
 if($results)
   { echo " <b><h3>Aktive Inhalte</h3></b>";
-  echo "<table border='1'> ";
-  echo "<tr><td><b>Name</b></td>";
-  echo "<td><b>Bild</b></td>";
-  echo "<td><b>Erstellt am</b></td>";
-  echo "<td><b>Deaktivieren?</b></td></tr>";
+  echo "<table class='table table-striped table-bordered'> ";
+  echo "<thead><th>Name</th>";
+  echo "<th>Bild</th>";
+  echo "<th>Erstellt am</th>";
+  echo "<th>Deaktivieren?</th></thead>";
+  echo "<tbody>";
 
 
          while ($row = $results->fetchArray())
@@ -60,11 +61,11 @@ if($results)
                  echo "<tr><td>Bild: ".$row['name']."</td>";
                  echo "<td><img src='thumbnail/".$row['erstzeit']."-".$row['name']."' alt='".$row['name']."'</td>";
                  echo "<td>".$row['erstzeit']."</td>";
-                 echo "<td><input type='checkbox' name='".$row['lfdnr']."' value='deaktivieren'>D</td>";
+                 echo "<td><input type='checkbox' name='".$row['lfdnr']."' value='deaktivieren' style='margin-right: 2px;'>D</td>";
 
-                 echo "</tr><br>";
+                 echo "</tr>";
          }
-
+	echo "</tbody>";
   echo "</table> ";
   }
 $db->close();
@@ -72,7 +73,8 @@ $db->close();
 ?>
  <br>
 
- <input type="submit" value="speichern!">
+ <input class="btn btn-default btn-file" type="submit" value="speichern!">
+
 </form>
 </div>
 	

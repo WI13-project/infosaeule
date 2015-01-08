@@ -64,25 +64,26 @@ echo" <form action='check_inaktiv.php' method='post' enctype='multipart/form-dat
   $results = $db->query("SELECT name, erstzeit,lfdnr from Bilder where status='2' order by 'lfdnr'");
 if($results)
   { echo " <b><h3>Inaktive Inhalte</h3></b>";
-  echo "<table border='1'> ";
-  echo "<tr><td><b>Name</b></td>";
-  echo "<td><b>Bild</b></td>";
-  echo "<td><b>Erstellt am</b></td>";
-  echo "<td><b>Aktivieren?</b></td>";
-  echo "<td><b>nichts</b></td>";
-  echo "<td><b>L&ouml;schen?</b></td></tr>";
+  echo "<table class='table table-striped table-bordered'> ";
+  echo "<thead><th>Name</th>";
+  echo "<th>Bild</th>";
+  echo "<th>Erstellt amb</th>";
+  echo "<th>Aktivieren?</th>";
+  echo "<th>nichts</th>";
+  echo "<th>L&ouml;schen?</th></thead>";
+  echo "<tbody>";
 
          while ($row = $results->fetchArray())
          {
                  echo "<tr><td>Bild: ".$row['name']."</td>";
                  echo "<td><img src='thumbnail/".$row['erstzeit']."-".$row['name']."' alt='".$row['name']."'</td>";
                  echo "<td>".$row['erstzeit']."</td>";
-                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='aktivieren'>A</td>";
-                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='' checked>-</td>";
-                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='loeschen'>L</td>";
+                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='aktivieren' style='margin-right: 2px;'>A</td>";
+                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='checked' style='margin-right: 2px;'>-</td>";
+                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='loeschen' style='margin-right: 2px;'>L</td>";
                  echo "</tr><br>";
          }
-
+  echo "</tbody>";
   echo "</table> ";
   }
 $db->close();
@@ -90,7 +91,7 @@ $db->close();
 ?>
  <br>
 
- <input type="submit" value="speichern!">
+ <input class="btn btn-default btn-file" type="submit" value="speichern!">
 </form>
 
 </div>
