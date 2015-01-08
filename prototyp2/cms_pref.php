@@ -74,7 +74,7 @@ $db->close();
 ?>
  <br>
    <input type="hidden" value="pb" name="pb" >
- <input class="btn btn-default btn-file" type="submit" value="Standart wiederherstellen" name='standard' >
+ <input class="btn btn-default btn-file" type="submit" value="Standard wiederherstellen" name='standard' >
  <input class="btn btn-default btn-file" type="submit" value="speichern!" name='speichern'>
 </form>
 </div>

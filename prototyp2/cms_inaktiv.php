@@ -67,7 +67,7 @@ if($results)
   echo "<table class='table table-striped table-bordered'> ";
   echo "<thead><th>Name</th>";
   echo "<th>Bild</th>";
-  echo "<th>Erstellt amb</th>";
+  echo "<th>Erstellt am</th>";
   echo "<th>Aktivieren?</th>";
   echo "<th>nichts</th>";
   echo "<th>L&ouml;schen?</th></thead>";
