@@ -4,22 +4,22 @@ include("header.php");
 
 
 // Erstellt ein thumbnail eines Bildes
-// Ordner unter $speicherordner benötigt ggf. Schreibrechte CHMOD(777)
+// Ordner unter $speicherordner benï¿½tigt ggf. Schreibrechte CHMOD(777)
 
 // Parameter:
 // $imgfile: Pfad zur Bilddatei
 // $speicherordner: Ordner indem die Thumbnails gespeichert werden sollen
-// $filenameOnly: Soll nur der Dateiname als Name für Thumbnail verwendet werden,
+// $filenameOnly: Soll nur der Dateiname als Name fï¿½r Thumbnail verwendet werden,
 // ansonsten inkl. Pfad
 function thumbnail($imgfile, $speicherordner="./thumbnail/", $filenameOnly=true)
    {
-   //Max. Größe des Thumbnail (Höhe und Breite)
+   //Max. Grï¿½ï¿½e des Thumbnail (Hï¿½he und Breite)
    $thumbsize = 300;
 
    //Dateiname erzeugen
    $filename = basename($imgfile);
 
-   //Fügt den Pfad zur Datei dem Dateinamen hinzu
+   //Fï¿½gt den Pfad zur Datei dem Dateinamen hinzu
    //Aus ordner/bilder/bild1.jpg wird dann ordner_bilder_bild1.jpg
    if(!$filenameOnly)
       {
@@ -38,19 +38,19 @@ function thumbnail($imgfile, $speicherordner="./thumbnail/", $filenameOnly=true)
    if(file_exists($ordner.$filename))
       return $ordner.$filename;
 
-   //Ausgansdatei vorhanden? Wenn nicht, false zurückgeben
+   //Ausgansdatei vorhanden? Wenn nicht, false zurï¿½ckgeben
    if(!file_exists($imgfile))
       return false;
 
 
 
-   //Infos über das Bild
+   //Infos ï¿½ber das Bild
    $endung = strrchr($imgfile,".");
 
    list($width, $height) = getimagesize($imgfile);
    $imgratio=$width/$height;
 
-   //Ist das Bild höher als breit?
+   //Ist das Bild hï¿½her als breit?
    if($imgratio>1)
       {
       $newwidth = $thumbsize;
@@ -107,7 +107,7 @@ function thumbnail($imgfile, $speicherordner="./thumbnail/", $filenameOnly=true)
    ImageDestroy($source);
 
 
-   //Pfad zu dem Bild zurückgeben
+   //Pfad zu dem Bild zurï¿½ckgeben
    return $ordner.$filename;
    }
 
@@ -117,7 +117,11 @@ $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
 //Dateiendung extrahieren
 if($_FILES['datei']['name'] == "")
         {
-        echo "Bitte Datei angeben!";
+        	die( 
+        	'<script language="javascript">
+					alert(unescape(""Bitte Datei angeben!""));
+			</script>');
+      
         }
 else
         {
@@ -130,7 +134,11 @@ else
 		elseif ( stristr($endung,'JPG'))
 			$endung = '.jpg';
 		else
-			die ("Endung nicht erkannt.");
+			die( 
+        	'<script language="javascript">
+					alert(unescape(""Endung nicht erkannt!""));
+			</script>');
+      
 		
 		
 		
@@ -141,10 +149,12 @@ else
 //Dateipraefix generieren
 date_default_timezone_set('Europe/Berlin');
 $user_id=$_SESSION['user_id'];
-echo "userid:";
-echo $_SESSION['user_id'];
+//echo "userid:";
+//echo $_SESSION['user_id'];
 if($_POST['bildname'] == "") {
-        echo "Bildname darf nicht leer sein!";
+        	'<script language="javascript">
+					alert(unescape(""Bildname darf nicht leer sein!""));
+			</script>';
         include("upload.php");
 }
 else {
@@ -155,8 +165,8 @@ else {
                                 if($_FILES['datei']['size'] <  1024000)
                                 {
 									move_uploaded_file($_FILES['datei']['tmp_name'], "upload/".$fileprefix.$endung);
-									echo "Das Bild wurde Erfolgreich nach upload/".$fileprefix.$endung." hochgeladen<br>";
-									echo "<br><a href=view.php>Bilder ansehen</a>";
+									echo "<p>Das Bild wurde Erfolgreich nach upload/".$fileprefix.$endung." hochgeladen<br></p>";
+									echo "<p><br><a href=view.php>Bilder ansehen</a></p>";
 									$db = new SQLite3('db/infosaeule.sqlite');
 
 									if(!$db) die($db->lastErrorMsg());
@@ -166,21 +176,27 @@ else {
 									{
 										 $db->exec("INSERT INTO Bilder(name, user, erstzeit, akt_ab, akt_bis,ort,status)
 										 VALUES ('".$_POST['bildname'].$endung."', '".$user_id."', '".date("Ymd_Hms")."', '','','upload','0')");
-										 echo "<br><br>Bildatei: upload/".$fileprefix.$endung."<br>";
-										 echo "<img src=\"".thumbnail("upload/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\">";
-										 echo "<br>Bild wurde hinzugef&uuml;gt";
+										 //echo "<p><br><br>Bilddatei: upload/".$fileprefix.$endung."<br></p>";
+										 echo "<p><img src=\"".thumbnail("upload/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\"></p>";
+										 //echo "<p><br>Bild wurde hinzugef&uuml;gt</p>";
 
 										$db->close();
 									}
 								}
                                 else
                                 {
-                                        echo "Das Bild darf nicht größer als 1 MB sein ";
+                                 die( 
+                                 '<script language="javascript">
+									alert(unescape("Das Bild darf nicht gr&ouml;ÃŸer als 1MB sein!"));
+								</script>');
                                 }
            }
 		else
                 {
-                echo "Bitte nur Bilder im gif bzw. jpg Format hochladen";
-                }
+                	die( 
+                                 '<script language="javascript">
+									alert(unescape(""Bitte nur Bilder im gif bzw. jpg Format hochladen""));
+								</script>');
+               }
 }
 ?>
