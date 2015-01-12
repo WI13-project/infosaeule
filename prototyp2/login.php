@@ -63,7 +63,8 @@
    		<input type="password" id="inputPassword" class="form-control" placeholder="Passwort" name="passwort" required>
    		<button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
   	</form>
-	
+  	<button type="button" class="btn btn-link" action="view.php">Ohne Anmeldung weiter zur Bildansicht</button>
+	</div>
 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
