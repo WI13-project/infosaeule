@@ -28,6 +28,9 @@
                         $results=$db->query("SELECT ID FROM user WHERE Benutzername='$username'");
                         $res=$results->fetchArray();
                         $_SESSION['user_id'] =$res['ID'];
+						
+						//Anmeldezeit speichern
+						$_SESSION['zeit']=time();
 
                         // Weiterleitung zur geschützten Startseite
                         if ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1') {
@@ -62,8 +65,8 @@
    		<label for="inputPassword" class="sr-only">Passwort:</label> 
    		<input type="password" id="inputPassword" class="form-control" placeholder="Passwort" name="passwort" required>
    		<button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
-  	</form>
-  	<button type="button" class="btn btn-link" action="view.php">Ohne Anmeldung weiter zur Bildansicht</button>
+  		<a class="btn btn-link" href="view.php">Ohne Anmeldung weiter zu den Bildern.</a>
+	</form>
 	</div>
 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
