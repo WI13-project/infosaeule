@@ -11,7 +11,7 @@ if (!isset($_SESSION)) session_start();
   }
 if (!isset($_SESSION['rolle']) || ($_SESSION['rolle'] == 'user') || ($_SESSION['rolle'] == 'cm')){
 	die ('<script language="javascript"> 
-		alert(unescape("Sie haben nicht die n%F6tigen Zugriffdrechte f%FCr diesen Bereich%21"));
+		alert(unescape("Sie haben nicht die n%F6tigen Zugriffsrechte f%FCr diesen Bereich%21"));
 	</script>');
 }
 

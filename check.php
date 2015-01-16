@@ -84,10 +84,10 @@ function thumbnail($imgfile, $speicherordner="./thumbnail/", $filenameOnly=true)
 
       $source = imagecreatefromgif($imgfile);
       }
-   else if($endung == ".PNG")
+   else if($endung == ".png")
       {
-      imagePNG($thumb,$ordner."temp.PNG");
-      $thumb = imagecreatefrompng($ordner."temp.PNG");
+      imagePNG($thumb,$ordner."temp.png");
+      $thumb = imagecreatefrompng($ordner."temp.png");
 
       $source = imagecreatefrompng($imgfile);
       }
@@ -165,7 +165,7 @@ else {
                                 if($_FILES['datei']['size'] <  1024000)
                                 {
 									move_uploaded_file($_FILES['datei']['tmp_name'], "upload/".$fileprefix.$endung);
-									echo "<p>Das Bild wurde Erfolgreich nach upload/".$fileprefix.$endung." hochgeladen<br></p>";
+									echo "<p>Das Bild wurde Erfolgreich nach upload/".$fileprefix.$endung." hochgeladen und wartet auf Freigabe<br></p>";
 									echo "<p><br><a href=view.php>Bilder ansehen</a></p>";
 									$db = new SQLite3('db/infosaeule.sqlite');
 
