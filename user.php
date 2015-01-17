@@ -146,7 +146,7 @@ switch($radio_check){
 			
 		$name = $_POST['user'];
 		$result = $db->querySingle("DELETE FROM user where Benutzername='$name'");
-		if($result){
+		if($result==""){
 			$msg .= "Benutzer ".$name." wurde nicht gefunden";
 			die( '<script language="javascript">
 					alert(unescape("'.$msg.'"));
