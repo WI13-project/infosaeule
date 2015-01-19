@@ -16,8 +16,11 @@ if (!isset($_SESSION['rolle']) || ($_SESSION['rolle'] == 'user') || ($_SESSION['
 }
 
 //Schliesse Session nach 30 min
-         if (isset($_SESSION['zeit']) && (time() - $_SESSION['zeit'] > 20)) {
+         if (isset($_SESSION['zeit']) && (time() - $_SESSION['zeit'] > 1800)) {
 
-                header('Location: http://'.$hostname.($path == '/' ? '' : $path).'/login.php');
+			echo '<script language="javascript">alert(unescape("Sie wurden nach 30 Minuten automatisch abgemeldet."))</script>';
+		    echo '<script language="javascript">window.location = "logout.php"</script>';
+
+                //header('Location: http://'.$hostname.($path == '/' ? '' : $path).'/login.php');
          }
 ?>

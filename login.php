@@ -1,18 +1,5 @@
 <?php
 
-
-         if (isset($_SESSION['zeit']) && (time() - $_SESSION['zeit'] > 1800)) {
-                                                
-                         ?>
-                         <script language="javascript">
-                                                alert("Sie wurden nach 30 Minuten automatisch abgemeldet.");
-                                        </script>';
-
-             <?php
-                 session_unset();
-            session_destroy();
-         }
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         session_start();
 
