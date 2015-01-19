@@ -1,4 +1,18 @@
 <?php
+
+
+         if (isset($_SESSION['zeit']) && (time() - $_SESSION['zeit'] > 1800)) {
+                                                
+                         ?>
+                         <script language="javascript">
+                                                alert("Sie wurden nach 30 Minuten automatisch abgemeldet.");
+                                        </script>';
+
+             <?php
+                 session_unset();
+            session_destroy();
+         }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         session_start();
 
@@ -28,9 +42,9 @@
                         $results=$db->query("SELECT ID FROM user WHERE Benutzername='$username'");
                         $res=$results->fetchArray();
                         $_SESSION['user_id'] =$res['ID'];
-						
-						//Anmeldezeit speichern
-						$_SESSION['zeit']=time();
+
+                                                //Anmeldezeit speichern
+                                                $_SESSION['zeit']=time();
 
                         // Weiterleitung zur geschützten Startseite
                         if ($_SERVER['SERVER_PROTOCOL'] == 'HTTP/1.1') {
@@ -50,24 +64,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
 <head>
-	<title>Gesch&uuml;tzter Bereich</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/login.css" rel="stylesheet">
+        <title>Gesch&uuml;tzter Bereich</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/login.css" rel="stylesheet">
 </head>
 
 <body>
-	
-	<div class="container">
-	<form class="form-signin" action="login.php" method="post">
-		<h3 class="form-signin-heading">Bitte loggen Sie sich ein</h3>
-   		<label for="inputUsername" class="sr-only">Username:</label> 
-   		<input type="text" id="inputUsername" class="form-control" placeholder="Benutzername" name="username" required autofocus>
-   		<label for="inputPassword" class="sr-only">Passwort:</label> 
-   		<input type="password" id="inputPassword" class="form-control" placeholder="Passwort" name="passwort" required>
-   		<button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
-  		<a class="btn btn-link" href="view.php">Ohne Anmeldung weiter zu den Bildern.</a>
-	</form>
-	</div>
-	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+        <div class="container">
+        <form class="form-signin" action="login.php" method="post">
+                <h3 class="form-signin-heading">Bitte loggen Sie sich ein</h3>
+                   <label for="inputUsername" class="sr-only">Username:</label>
+                   <input type="text" id="inputUsername" class="form-control" placeholder="Benutzername" name="username" required autofocus>
+                   <label for="inputPassword" class="sr-only">Passwort:</label>
+                   <input type="password" id="inputPassword" class="form-control" placeholder="Passwort" name="passwort" required>
+                   <button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
+                  <a class="btn btn-link" href="view.php">Ohne Anmeldung weiter zu den Bildern.</a>
+        </form>
+        </div>
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
