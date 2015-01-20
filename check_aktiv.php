@@ -2,6 +2,9 @@
 include("auth-cm.php");
 include("header.php");
 include("cms_links.php");
+
+  echo "<link href='css/bootstrap.min.css' rel='stylesheet'>";
+  echo "<div id='cms_aktiv' class='container'>";
 echo" <form action='cms_aktiv.php' method='post' enctype='multipart/form-data'>";
 
 $db = new SQLite3('db/infosaeule.sqlite');
@@ -14,11 +17,12 @@ $db = new SQLite3('db/infosaeule.sqlite');
     $results = $db->query("SELECT name, erstzeit,lfdnr from Bilder where status='1' order by 'lfdnr'");
 if($results)
   { echo " <b><h3>zu deaktivierende Inhalte</h3></b>";
-  echo "<table border='1'> ";
-  echo "<tr><td><b>Name</b></td>";
-  echo "<td><b>Bild</b></td>";
-  echo "<td><b>Erstellt am</b></td>";
-  echo "<td><b>dektivieren?</b></td></tr>";
+  echo "<table class='table table-striped table-bordered'> ";
+  echo "<thead><th>Name</th>";
+  echo "<th>Bild</th>";
+  echo "<th>Erstellt am</th>";
+  echo "<th>Deaktivieren?</th></thead>";
+  echo "<tbody>";
 
 
          while (($row = $results->fetchArray()) )
@@ -28,9 +32,7 @@ if($results)
                  echo "<td><img src='thumbnail/".$row['erstzeit']."-".$row['name']."' alt='".$row['name']."'</td>";
                  echo "<td>".$row['erstzeit']."</td>";
                  echo "<td><input type='checkbox' name='".$row['lfdnr']."' value='deaktivieren'checked>D</td>";
-
-
-                 echo "</tr><br>";
+                 echo "</tr>";
          }
 
   echo "</table> ";
@@ -41,5 +43,6 @@ $db->close();
 ?>
  <br>
    <input type="hidden" value="ab" name="ab" >
- <input type="submit" value="speichern!">
+ <input  class="btn btn-default btn-file" type="submit" value="speichern!">
 </form>
+</div>

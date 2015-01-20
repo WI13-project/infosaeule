@@ -14,22 +14,30 @@ if($results)
          {
                  $i++;
                  echo "<input type='hidden' value='".$row['erstzeit']."-".$row['name']."' name='".$i."' id='pfad".$i."' >";
-
+                 //echo $row['erstzeit']."-".$row['name'];
          }
             echo "<input type='hidden' value='".$i."' name='0' id='pfad0'>";
+            //echo " anzahl:".$i;
 
   }
    $results = $db->query("SELECT lfdnr,value FROM preferences ");
 if($results)
   {
-         $i='0';
+         $k='0';
          while (($row2 = $results->fetchArray()) )
          {
-                 $i++;
+                 $k++;
                  echo "<input type='hidden' value='".$row2['value']."' name='p".$row2['lfdnr']."' id='p".$row2['lfdnr']."' >";
-                 if ($i=='3') $rahmen=$row2['value'];
-                 if ($i=='1') $maxA=$row2['value'];
-                 if ($i=='4') $bgc=$row2['value'];
+                // echo "|".$k."=".$row2['value'];
+                 if ($k=='3') { $rahmen=$row2['value'];
+                              //echo " Rahmen:".$rahmen;
+                               }
+                 if ($k=='1') {$maxA=$row2['value'];
+                               //echo " MaxBilder:".$maxA;
+                               }
+                 if ($k=='4') {$bgc=$row2['value'];
+                               //echo " Hintergrund:" .$bgc;
+                               }
          }
 
   }
@@ -82,6 +90,7 @@ function bildwechsel () {
 
             }
             else{
+
                  document.getElementById("bild"+(b+1)).src = thumb+'/'+ bilder[bneu];
 
             }
@@ -113,7 +122,11 @@ function bildwechsel () {
                          <center>
                               <?php
 
-                                For($j=2;($j<=$i-1) && ($j<=$maxA);$j++){
+                                 //echo " i=".$i;
+                                 //echo " maxA=".$maxA;
+
+                                For($j=2;(($j<=$i) && ($j<=$maxA));$j++){
+
                                   echo "<img src='thumbnail/temp.jpg' width='100%'  style='border: 0px;' id='bild".$j."' align='middle'><br>";
                                   }
                               ?>

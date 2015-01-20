@@ -2,6 +2,8 @@
 include("auth-user.php");
 include("header.php");
 
+  echo "<link href='css/bootstrap.min.css' rel='stylesheet'>";
+  echo "<div id='cms_inaktiv' class='container'>";
 
 // Erstellt ein thumbnail eines Bildes
 // Ordner unter $speicherordner ben�tigt ggf. Schreibrechte CHMOD(777)
@@ -117,31 +119,31 @@ $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
 //Dateiendung extrahieren
 if($_FILES['datei']['name'] == "")
         {
-        	die( 
-        	'<script language="javascript">
-					alert(unescape(""Bitte Datei angeben!""));
-			</script>');
-      
+                die(
+                '<script language="javascript">
+                                        alert(unescape(""Bitte Datei angeben!""));
+                        </script>');
+
         }
 else
         {
         //$teile =explode(".",$_FILES['datei']['name']);
-		$endung = substr( strrchr( $_FILES['datei']['name'], "." ),1);
-		if ( stristr($endung,'GIF'))
-			$endung = '.gif';
-		elseif ( stristr($endung,'PNG'))
-			$endung = '.png';
-		elseif ( stristr($endung,'JPG'))
-			$endung = '.jpg';
-		else
-			die( 
-        	'<script language="javascript">
-					alert(unescape(""Endung nicht erkannt!""));
-			</script>');
-      
-		
-		
-		
+                $endung = substr( strrchr( $_FILES['datei']['name'], "." ),1);
+                if ( stristr($endung,'GIF'))
+                        $endung = '.gif';
+                elseif ( stristr($endung,'PNG'))
+                        $endung = '.png';
+                elseif ( stristr($endung,'JPG'))
+                        $endung = '.jpg';
+                else
+                        die(
+                '<script language="javascript">
+                                        alert(unescape(""Endung nicht erkannt!""));
+                        </script>');
+
+
+
+
         //$endung =".".$teile[1];
         }
 //echo "Endung: ".$endung."<br>";
@@ -152,9 +154,9 @@ $user_id=$_SESSION['user_id'];
 //echo "userid:";
 //echo $_SESSION['user_id'];
 if($_POST['bildname'] == "") {
-        	'<script language="javascript">
-					alert(unescape(""Bildname darf nicht leer sein!""));
-			</script>';
+                '<script language="javascript">
+                                        alert(unescape(""Bildname darf nicht leer sein!""));
+                        </script>';
         include("upload.php");
 }
 else {
@@ -164,39 +166,40 @@ else {
                                 //Groesse in Byte ueberpruefen
                                 if($_FILES['datei']['size'] <  1024000)
                                 {
-									move_uploaded_file($_FILES['datei']['tmp_name'], "upload/".$fileprefix.$endung);
-									echo "<p>Das Bild wurde Erfolgreich nach upload/".$fileprefix.$endung." hochgeladen und wartet auf Freigabe<br></p>";
-									echo "<p><br><a href=view.php>Bilder ansehen</a></p>";
-									$db = new SQLite3('db/infosaeule.sqlite');
+                                                                        move_uploaded_file($_FILES['datei']['tmp_name'], "upload/".$fileprefix.$endung);
+                                                                        echo "<p>Das Bild wurde Erfolgreich nach upload/".$fileprefix.$endung." hochgeladen und wartet auf Freigabe<br></p>";
+                                                                        echo "<p><br><a href=view.php>Bilder ansehen</a></p>";
+                                                                        $db = new SQLite3('db/infosaeule.sqlite');
 
-									if(!$db) die($db->lastErrorMsg());
+                                                                        if(!$db) die($db->lastErrorMsg());
 
 
-									if($db)
-									{
-										 $db->exec("INSERT INTO Bilder(name, user, erstzeit, akt_ab, akt_bis,ort,status)
-										 VALUES ('".$_POST['bildname'].$endung."', '".$user_id."', '".date("Ymd_Hms")."', '','','upload','0')");
-										 //echo "<p><br><br>Bilddatei: upload/".$fileprefix.$endung."<br></p>";
-										 echo "<p><img src=\"".thumbnail("upload/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\"></p>";
-										 //echo "<p><br>Bild wurde hinzugef&uuml;gt</p>";
+                                                                        if($db)
+                                                                        {
+                                                                                 $db->exec("INSERT INTO Bilder(name, user, erstzeit, akt_ab, akt_bis,ort,status)
+                                                                                 VALUES ('".$_POST['bildname'].$endung."', '".$user_id."', '".date("Ymd_Hms")."', '','','upload','0')");
+                                                                                 //echo "<p><br><br>Bilddatei: upload/".$fileprefix.$endung."<br></p>";
+                                                                                 echo "<p><img src=\"".thumbnail("upload/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\"></p>";
+                                                                                 //echo "<p><br>Bild wurde hinzugef&uuml;gt</p>";
 
-										$db->close();
-									}
-								}
+                                                                                $db->close();
+                                                                        }
+                                                                }
                                 else
                                 {
-                                 die( 
+                                 die(
                                  '<script language="javascript">
-									alert(unescape("Das Bild darf nicht gr&ouml;ßer als 1MB sein!"));
-								</script>');
+                                                                        alert(unescape("Das Bild darf nicht gr&ouml;ßer als 1MB sein!"));
+                                                                </script>');
                                 }
            }
-		else
+                else
                 {
-                	die( 
+                        die(
                                  '<script language="javascript">
-									alert(unescape(""Bitte nur Bilder im gif bzw. jpg Format hochladen""));
-								</script>');
+                                                                        alert(unescape(""Bitte nur Bilder im gif bzw. jpg Format hochladen""));
+                                                                </script>');
                }
 }
 ?>
+</div>

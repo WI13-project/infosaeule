@@ -5,12 +5,12 @@ include("cms_links.php");
 ?>
 <html>
 <head>
-	<title></title>
-	
+        <title></title>
+
   <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div id="cms_inaktiv" class="container">
+        <div id="cms_inaktiv" class="container">
 <?php
 $db = new SQLite3('db/infosaeule.sqlite');
 if(!$db)die($db->lastErrorMsg());
@@ -24,14 +24,15 @@ if (isset($_POST['lb']))
                  while (($row = $results->fetchArray()) )
                  if ((isset($_POST[$row['lfdnr']])) && ($_POST[$row['lfdnr']]=='loeschen'))
                  {
-
-                         unlink("thumbnail/".$row['erstzeit']."-".$row['name']);
-                         unlink("upload/".$row['erstzeit']."-".$row['name']);
+                        // UNLINK auskommentiert
+                        // unlink("thumbnail/".$row['erstzeit']."-".$row['name']);
+                        // unlink("upload/".$row['erstzeit']."-".$row['name']);
                          $result = $db->querySingle("Delete From Bilder WHERE lfdnr='".$row['lfdnr']."'");
                          if($result)
                          {
                          echo "Eintrag konnte nicht gel&ouml;scht werden";
                          }
+                         else {  echo "Bild(er) wurde(n) gel&ouml;scht!";  }
 
                    }
             echo "</table> ";
@@ -68,9 +69,9 @@ if($results)
   echo "<thead><th>Name</th>";
   echo "<th>Bild</th>";
   echo "<th>Erstellt am</th>";
-  echo "<th>Aktivieren?</th>";
-  echo "<th>nichts</th>";
-  echo "<th>L&ouml;schen?</th></thead>";
+  echo "<th> Aktivieren? </th>";
+  echo "<th> nichts </th>";
+  echo "<th> L&ouml;schen? </th></thead>";
   echo "<tbody>";
 
          while ($row = $results->fetchArray())
@@ -79,9 +80,9 @@ if($results)
                  echo "<td><img src='thumbnail/".$row['erstzeit']."-".$row['name']."' alt='".$row['name']."'</td>";
                  echo "<td>".$row['erstzeit']."</td>";
                  echo "<td><input type='radio' name='".$row['lfdnr']."' value='aktivieren' style='margin-right: 2px;'>A</td>";
-                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='checked' style='margin-right: 2px;'>-</td>";
+                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='checked' checked style='margin-right: 2px;'>-</td>";
                  echo "<td><input type='radio' name='".$row['lfdnr']."' value='loeschen' style='margin-right: 2px;'>L</td>";
-                 echo "</tr><br>";
+                 echo "</tr>";
          }
   echo "</tbody>";
   echo "</table> ";
@@ -95,6 +96,6 @@ $db->close();
 </form>
 
 </div>
-	
+
 </body>
 </html>

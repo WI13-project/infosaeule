@@ -5,12 +5,12 @@ include("cms_links.php");
 ?>
 <html>
 <head>
-	<title></title>
-	
+        <title></title>
+
   <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div id="cms_neue" class="container">
+        <div id="cms_neue" class="container">
 <?php
 $db = new SQLite3('db/infosaeule.sqlite');
 if(!$db)die($db->lastErrorMsg());
@@ -25,8 +25,8 @@ if (isset($_POST['nb']))
                  if ((isset($_POST[$row['lfdnr']])) && ($_POST[$row['lfdnr']]=='loeschen'))
                  {
 
-                         unlink("thumbnail/".$row['erstzeit']."-".$row['name']);
-                         unlink("upload/".$row['erstzeit']."-".$row['name']);
+                         //unlink("thumbnail/".$row['erstzeit']."-".$row['name']);
+                         //unlink("upload/".$row['erstzeit']."-".$row['name']);
                          $result = $db->querySingle("Delete From Bilder WHERE lfdnr='".$row['lfdnr']."'");
                          echo "Bild ".$row['name']." wurde gel&ouml;scht!<br>";
                          if($result)
@@ -81,9 +81,9 @@ if($results)
                  echo "<td><img src='thumbnail/".$row['erstzeit']."-".$row['name']."' alt='".$row['name']."'</td>";
                  echo "<td>".$row['erstzeit']."</td>";
                  echo "<td><input type='radio' name='".$row['lfdnr']."' value='aktivieren' style='margin-right: 2px;'>A</td>";
-                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='checked' style='margin-right: 2px;'> ---</td>";
+                 echo "<td><input type='radio' name='".$row['lfdnr']."' value='checked' checked style='margin-right: 2px;'> ---</td>";
                  echo "<td><input type='radio' name='".$row['lfdnr']."' value='loeschen' style='margin-right: 2px;'>L</td>";
-                 echo "</tr><br>";
+                 echo "</tr>";
          }
   echo "</tbody>";
   echo "</table> ";
