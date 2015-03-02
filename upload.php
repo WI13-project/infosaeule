@@ -13,7 +13,7 @@ include("header.php");
                <div class="control-group">
 					<label class="control-label" for="bildname"></label>
 						<div class="controls">
-							<input name="bildname" type="text" id="bildname" placeholder="Bildbeschreibung">
+							<input name="bildname" type="text" id="bildname" placeholder="Bildbeschreibung" required autofocus>
 					<span class="btn btn-default btn-file">
 						Bild ausw&auml;hlen <input name="datei" type="file" id="datei">
 					</span>

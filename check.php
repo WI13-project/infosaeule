@@ -5,6 +5,7 @@ include("header.php");
   echo "<link href='css/bootstrap.min.css' rel='stylesheet'>";
   echo "<div id='cms_inaktiv' class='container'>";
 
+  
 // Erstellt ein thumbnail eines Bildes
 // Ordner unter $speicherordner ben�tigt ggf. Schreibrechte CHMOD(777)
 
@@ -113,18 +114,15 @@ function thumbnail($imgfile, $speicherordner="./thumbnail/", $filenameOnly=true)
    return $ordner.$filename;
    }
 
+//Prüfe auf Bildnamen
+if(empty($_POST['bildname'])) {
+		die('Bildname darf nicht leer sein! Nochmal..<meta http-equiv="refresh" content="1;url=upload.php">');
+       }
 
-
-$dateityp = GetImageSize($_FILES['datei']['tmp_name']);
 //Dateiendung extrahieren
-if($_FILES['datei']['name'] == "")
-        {
-                die(
-                '<script language="javascript">
-                                        alert(unescape(""Bitte Datei angeben!""));
-                        </script>');
-
-        }
+if(empty($_FILES['datei']['name'])){
+	die('Bitte Datei angeben! Nochmal..<meta http-equiv="refresh" content="1;url=upload.php">');
+	}
 else
         {
         //$teile =explode(".",$_FILES['datei']['name']);
@@ -136,10 +134,7 @@ else
                 elseif ( stristr($endung,'JPG'))
                         $endung = '.jpg';
                 else
-                        die(
-                '<script language="javascript">
-                                        alert(unescape(""Endung nicht erkannt!""));
-                        </script>');
+                        die('Falsche Dateiendung! Nochmal..<meta http-equiv="refresh" content="1;url=upload.php">');
 
 
 
@@ -153,13 +148,8 @@ date_default_timezone_set('Europe/Berlin');
 $user_id=$_SESSION['user_id'];
 //echo "userid:";
 //echo $_SESSION['user_id'];
-if($_POST['bildname'] == "") {
-                '<script language="javascript">
-                                        alert(unescape(""Bildname darf nicht leer sein!""));
-                        </script>';
-        include("upload.php");
-}
-else {
+$dateityp = GetImageSize($_FILES['datei']['tmp_name']);
+
         $fileprefix=date("Ymd_Hms")."-".$_POST['bildname'];
         if($dateityp[2] != 0)
           {
@@ -187,19 +177,13 @@ else {
                                                                 }
                                 else
                                 {
-                                 die(
-                                 '<script language="javascript">
-                                                                        alert(unescape("Das Bild darf nicht gr&ouml;ßer als 1MB sein!"));
-                                                                </script>');
+                                die('Das Bild darf nicht größer als 1MB sein! Nochmal..<meta http-equiv="refresh" content="1;url=upload.php">');
                                 }
            }
                 else
                 {
-                        die(
-                                 '<script language="javascript">
-                                                                        alert(unescape(""Bitte nur Bilder im gif bzw. jpg Format hochladen""));
-                                                                </script>');
+                    die('Bitte nur Bilder im jpg oder gif Format hochladen! Nochmal..<meta http-equiv="refresh" content="1;url=upload.php">');
                }
-}
+
 ?>
 </div>
