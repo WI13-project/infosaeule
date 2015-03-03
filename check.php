@@ -1,128 +1,22 @@
 <?php
 include("auth-user.php");
 include("header.php");
+include ("bildbearbeitung.php");
 
   echo "<link href='css/bootstrap.min.css' rel='stylesheet'>";
   echo "<div id='cms_inaktiv' class='container'>";
 
-  
-// Erstellt ein thumbnail eines Bildes
-// Ordner unter $speicherordner ben�tigt ggf. Schreibrechte CHMOD(777)
 
-// Parameter:
-// $imgfile: Pfad zur Bilddatei
-// $speicherordner: Ordner indem die Thumbnails gespeichert werden sollen
-// $filenameOnly: Soll nur der Dateiname als Name f�r Thumbnail verwendet werden,
-// ansonsten inkl. Pfad
-function thumbnail($imgfile, $speicherordner="./thumbnail/", $filenameOnly=true)
-   {
-   //Max. Gr��e des Thumbnail (H�he und Breite)
-   $thumbsize = 300;
-
-   //Dateiname erzeugen
-   $filename = basename($imgfile);
-
-   //F�gt den Pfad zur Datei dem Dateinamen hinzu
-   //Aus ordner/bilder/bild1.jpg wird dann ordner_bilder_bild1.jpg
-   if(!$filenameOnly)
-      {
-      $replace = array("/","\\",".");
-      $filename = str_replace($replace,"_",dirname($imgfile))."_".$filename;
-      }
-
-   //Schreibarbeit sparen
-   $ordner = $speicherordner;
-
-   //Speicherordner vorhanden
-   if(!is_dir($ordner))
-      return false;
-
-   //Wenn Datei schon vorhanden, kein Thumbnail erstellen
-   if(file_exists($ordner.$filename))
-      return $ordner.$filename;
-
-   //Ausgansdatei vorhanden? Wenn nicht, false zur�ckgeben
-   if(!file_exists($imgfile))
-      return false;
-
-
-
-   //Infos �ber das Bild
-   $endung = strrchr($imgfile,".");
-
-   list($width, $height) = getimagesize($imgfile);
-   $imgratio=$width/$height;
-
-   //Ist das Bild h�her als breit?
-   if($imgratio>1)
-      {
-      $newwidth = $thumbsize;
-      $newheight = $thumbsize/$imgratio;
-      }
-   else
-      {
-      $newheight = $thumbsize;
-      $newwidth = $thumbsize*$imgratio;
-      }
-
-   //Bild erstellen
-   //Achtung: imagecreatetruecolor funktioniert nur bei bestimmten GD Versionen
-   //Falls ein Fehler auftritt, imagecreate nutzen
-   if(function_exists("imagecreatetruecolor"))
-     $thumb = imagecreatetruecolor($newwidth,$newheight);
-   else
-      $thumb = imagecreate ($newwidth,$newheight);
-
-   if($endung == ".jpg")
-      {
-      imageJPEG($thumb,$ordner."temp.jpg");
-      $thumb = imagecreatefromjpeg($ordner."temp.jpg");
-
-      $source = imagecreatefromjpeg($imgfile);
-      }
-   else if($endung == ".gif")
-      {
-      imageGIF($thumb,$ordner."temp.gif");
-      $thumb = imagecreatefromgif($ordner."temp.gif");
-
-      $source = imagecreatefromgif($imgfile);
-      }
-   else if($endung == ".png")
-      {
-      imagePNG($thumb,$ordner."temp.png");
-      $thumb = imagecreatefrompng($ordner."temp.png");
-
-      $source = imagecreatefrompng($imgfile);
-      }
-   imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-
-   //Bild speichern
-   if($endung == ".png")
-      imagepng($thumb,$ordner.$filename);
-   else if($endung == ".gif")
-      imagegif($thumb,$ordner.$filename);
-   else
-      imagejpeg($thumb,$ordner.$filename,100);
-
-
-   //Speicherplatz wieder freigeben
-   ImageDestroy($thumb);
-   ImageDestroy($source);
-
-
-   //Pfad zu dem Bild zur�ckgeben
-   return $ordner.$filename;
-   }
 
 //Prüfe auf Bildnamen
 if(empty($_POST['bildname'])) {
-		die('Bildname darf nicht leer sein! Nochmal..<meta http-equiv="refresh" content="1;url=upload.php">');
+                die('Bildname darf nicht leer sein! Nochmal..<meta http-equiv="refresh" content="1;url=upload.php">');
        }
 
 //Dateiendung extrahieren
 if(empty($_FILES['datei']['name'])){
-	die('Bitte Datei angeben! Nochmal..<meta http-equiv="refresh" content="1;url=upload.php">');
-	}
+        die('Bitte Datei angeben! Nochmal..<meta http-equiv="refresh" content="1;url=upload.php">');
+        }
 else
         {
         //$teile =explode(".",$_FILES['datei']['name']);
@@ -150,13 +44,15 @@ $user_id=$_SESSION['user_id'];
 //echo $_SESSION['user_id'];
 $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
 
-        $fileprefix=date("Ymd_Hms")."-".$_POST['bildname'];
+        $fileprefix=date("Ymd_His")."-".$_POST['bildname'];
         if($dateityp[2] != 0)
           {
                                 //Groesse in Byte ueberpruefen
                                 if($_FILES['datei']['size'] <  1024000)
                                 {
-                                                                        move_uploaded_file($_FILES['datei']['tmp_name'], "upload/".$fileprefix.$endung);
+                                                                        move_uploaded_file($_FILES['datei']['tmp_name'], "tmp/".$fileprefix.$endung);
+                                                                        breitbild("tmp/".$fileprefix.$endung,"./upload/");
+
                                                                         echo "<p>Das Bild wurde Erfolgreich nach upload/".$fileprefix.$endung." hochgeladen und wartet auf Freigabe<br></p>";
                                                                         echo "<p><br><a href=view.php>Bilder ansehen</a></p>";
                                                                         $db = new SQLite3('db/infosaeule.sqlite');
@@ -167,13 +63,14 @@ $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
                                                                         if($db)
                                                                         {
                                                                                  $db->exec("INSERT INTO Bilder(name, user, erstzeit, akt_ab, akt_bis,ort,status)
-                                                                                 VALUES ('".$_POST['bildname'].$endung."', '".$user_id."', '".date("Ymd_Hms")."', '','','upload','0')");
+                                                                                 VALUES ('".$_POST['bildname'].$endung."', '".$user_id."', '".date("Ymd_His")."', '','','upload','0')");
                                                                                  //echo "<p><br><br>Bilddatei: upload/".$fileprefix.$endung."<br></p>";
-                                                                                 echo "<p><img src=\"".thumbnail("upload/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\"></p>";
+                                                                                 echo "<p><img src=\"".thumbnail("tmp/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\"></p>";
                                                                                  //echo "<p><br>Bild wurde hinzugef&uuml;gt</p>";
 
                                                                                 $db->close();
                                                                         }
+                                                                         unlink("tmp/".$fileprefix.$endung); 
                                                                 }
                                 else
                                 {
