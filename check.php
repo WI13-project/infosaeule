@@ -6,6 +6,10 @@ include ("bildbearbeitung.php");
   echo "<link href='css/bootstrap.min.css' rel='stylesheet'>";
   echo "<div id='cms_inaktiv' class='container'>";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/release
 
  $db = new SQLite3('db/infosaeule.sqlite');
 //Prüfe auf Bildnamen
@@ -44,8 +48,12 @@ $user_id=$_SESSION['user_id'];
 //echo $_SESSION['user_id'];
 $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
 
+<<<<<<< HEAD
         $zeit=date("Ymd_His");
         $fileprefix=$zeit."-".$_POST['bildname'];
+=======
+        $fileprefix=date("Ymd_His")."-".$_POST['bildname'];
+>>>>>>> origin/release
         if($dateityp[2] != 0)
           {
 
@@ -83,9 +91,15 @@ $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
                                 if($_FILES['datei']['size'] <  1024000)
                                 {
                                                                         move_uploaded_file($_FILES['datei']['tmp_name'], "tmp/".$fileprefix.$endung);
+<<<<<<< HEAD
                                                                         bild_zu_breitbild_png("tmp/".$fileprefix.$endung,$ordner_b,$groesse_b);
 
                                                                         echo "<p>Das Bild wurde Erfolgreich nach upload/".$fileprefix.".png hochgeladen und wartet auf Freigabe<br></p>";
+=======
+                                                                        breitbild("tmp/".$fileprefix.$endung,"./upload/");
+
+                                                                        echo "<p>Das Bild wurde Erfolgreich nach upload/".$fileprefix.$endung." hochgeladen und wartet auf Freigabe<br></p>";
+>>>>>>> origin/release
                                                                         echo "<p><br><a href=view.php>Bilder ansehen</a></p>";
                                                                         $db = new SQLite3('db/infosaeule.sqlite');
 
@@ -95,14 +109,24 @@ $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
                                                                         if($db)
                                                                         {
                                                                                  $db->exec("INSERT INTO Bilder(name, user, erstzeit, akt_ab, akt_bis,ort,status)
+<<<<<<< HEAD
                                                                                  VALUES ('".$_POST['bildname'].".png', '".$user_id."', '".$zeit."', '','','upload','0')");
                                                                                  //echo "<p><br><br>Bilddatei: upload/".$fileprefix.".png"<br></p>";
                                                                                  echo "<p><img src=\"".bild_zu_breitbild_png("tmp/".$fileprefix.$endung,$ordner_thumb,$groesse_thumb)."png\" alt=\"Vorschau ".$fileprefix.".png\"></p>";
+=======
+                                                                                 VALUES ('".$_POST['bildname'].$endung."', '".$user_id."', '".date("Ymd_His")."', '','','upload','0')");
+                                                                                 //echo "<p><br><br>Bilddatei: upload/".$fileprefix.$endung."<br></p>";
+                                                                                 echo "<p><img src=\"".thumbnail("tmp/".$fileprefix.$endung)."\" alt=\"Vorschau ".$fileprefix.$endung."\"></p>";
+>>>>>>> origin/release
                                                                                  //echo "<p><br>Bild wurde hinzugef&uuml;gt</p>";
 
                                                                                 $db->close();
                                                                         }
+<<<<<<< HEAD
                                                                          unlink("tmp/".$fileprefix.$endung);
+=======
+                                                                         unlink("tmp/".$fileprefix.$endung); 
+>>>>>>> origin/release
                                                                 }
                                 else
                                 {

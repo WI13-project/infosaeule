@@ -5,7 +5,7 @@ Infosäule
 Softwareprojekt zur Entwicklung einer Infosäule.
 https://github.com/WI13-project/infosaeule/releases
 
-Das Projekt ist unter http://ohli.bplaced.net/wi13/wi13/prototyp2/ erreichbar.
+Das Projekt ist unter http://ohli.bplaced.net/wi13/infosaeule/ erreichbar.
 Die DB liegt auf selbigem Server.
 Changes am PHP-Code werden alle 5 Minuten per Cron-Job auf den Webserver geschoben.
 
