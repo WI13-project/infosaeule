@@ -40,9 +40,21 @@ include("header.php");
 <input class="btn btn-default btn-file" type="submit" value="Hochladen">
 </form>
 <h4>Nur Bilder bis 1 MB im jpg,gif oder png-Format!</h4>
+<<<<<<< HEAD
 <h5>Bilder werden automatisch auf 1920x1080 Pixel und in einem 16:9-Breitbild scaliert.<br>
 Dies geschieht bei PNG und GIF durch transparente Hintergr&uuml;nde.<br>
 Bei JPG sind die Hintergr&uuml;nde grunds&auml;tzlich Schwarz.</h5>
+=======
+<<<<<<< HEAD
+<h5>Bilder werden automatisch auf 1920x1080 Pixel und in einem 16:9-Breitbild scaliert.<br>
+Dies geschieht bei PNG und GIF durch transparente Hintergr&uuml;nde.<br>
+Bei JPG sind die Hintergr&uuml;nde grunds&auml;tzlich Schwarz.</h5>
+=======
+<h5>Bilder werden automatisch auf 1920x1080 Pixel und in einem 16:9-Breitbild skaliert.<br>
+Dies geschieht bei PNG und GIF durch transparente Hintergr&uuml;nde.<br>
+Bei JPG sind die Hintergr&uuml;nde grunds&auml;tzlich schwarz.</h5>
+>>>>>>> origin/release
+>>>>>>> origin/release
 
 
         </div>

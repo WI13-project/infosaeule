@@ -15,6 +15,8 @@ include("cms_links.php");
 echo" <form action='cms_pref.php' method='post' enctype='multipart/form-data'>";
 
 $db = new SQLite3('db/infosaeule.sqlite');
+$Eintraege=8; //Anzahl der Anträge in der DB unter Preferences
+
 
 $Eintraege=13; //Anzahl der Anträge in der DB unter Preferences
 
@@ -90,6 +92,7 @@ if($results)
                  if ($row['lfdnr']=='4')     $bgc=$row['value'];
 
                  if ($flag_a[$row['lfdnr']]==1){
+<<<<<<< HEAD
 
 
                  echo "<tr><td bgcolor='".$flag."'>".$row['lfdnr']."</td>";
@@ -105,6 +108,19 @@ if($results)
                  echo "<td><b>".$row['con']."</b></td>";
                  echo "<td>".$row['value_s']."</td>";
                  echo "<td >".$row['value']."</td>";
+=======
+                 echo "<tr>'><td bgcolor='".$flag."'><b>".$row['con']."</b></td>";
+                 echo "<td>".$row['value_s']."</td>";
+                 echo "<td >".$row['value']."</td>";
+                 echo "<td bgcolor='".$flag."'><input class='form-control placeholder='.col-xs-3' type='input' value='".$row['value']."' name='".$row['lfdnr']."' ></td>";
+                 echo "</tr>";
+                 }
+                 else
+                 {
+                 echo "<tr><td><b>".$row['con']."</b></td>";
+                 echo "<td>".$row['value_s']."</td>";
+                 echo "<td >".$row['value']."</td>";
+>>>>>>> origin/release
                  echo "<td><input class='form-control placeholder='.col-xs-3' type='input' value='".$row['value']."' name='".$row['lfdnr']."' ></td>";
                  echo "</tr>";
                  }
