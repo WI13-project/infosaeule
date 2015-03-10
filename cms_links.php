@@ -16,6 +16,7 @@ include("auth-cm.php");
                 <li id="aktive"><a href=cms_aktiv.php>Aktive Bilder</a></li>
                 <li id="inaktive"><a href=cms_inaktiv.php>Inaktive Bilder</a></li>
                 <li id="pref"><a href=cms_pref.php>Einstellungen</a></li>
+                <li id="pref"><a href=cms_banner.php>Banner</a></li>
         </ul>
 
 </div>

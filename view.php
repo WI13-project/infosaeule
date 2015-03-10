@@ -24,10 +24,12 @@ if($results)
 if($results)
   {
          $k='0';
+         $pref[]="Preferences";
          while (($row2 = $results->fetchArray()) )
          {
                  $k++;
                  echo "<input type='hidden' value='".$row2['value']."' name='p".$row2['lfdnr']."' id='p".$row2['lfdnr']."' >";
+                 $pref[]=$row2['value'];
                 // echo "|".$k."=".$row2['value'];
                  if ($k=='3') { $rahmen=$row2['value'];
                               //echo " Rahmen:".$rahmen;
@@ -38,13 +40,28 @@ if($results)
                  if ($k=='4') {$bgc=$row2['value'];
                                //echo " Hintergrund:" .$bgc;
                                }
+
+                 if ($k=='9') {$banner=$row2['value'];
+                               //echo " Banner?:" .$banner;
+                               }
+
          }
 
   }
 
+    $results = $db->query("SELECT name, erstzeit,lfdnr FROM bilder WHERE status='4' ORDER BY lfdnr DESC");
+if($results)
+  {
+      $row = $results->fetchArray();
+
+                 $banner_add=$row['erstzeit']."-".$row['name'];
+                 echo "<input type='hidden' value='".$row['erstzeit']."-".$row['name']."' name='Banner' id='Banner' >";
+                 echo $row['erstzeit']."-".$row['name'];
+
+
+  }
 $db->close();
 }
-
 
 ?>
 <head>
@@ -117,6 +134,44 @@ function bildwechsel () {
 <body height="100%" bgcolor="<?=$bgc;?>">
 
  <center><table border="<?=$rahmen?>" height="100%" width="100%">
+        <?php
+
+        if ($banner == '1')
+        {
+
+                if ($pref['13']=='1')
+                {
+
+                        echo " <tr height='10%' >  <td width='10%'   > <center> <font size='+5' color='#FFFFFF'>LOGO </font> </center></td> <td width='90%' > <center>  <font size='+5' color='#FFFFFF'>".$pref['12']."</font> </center>   </td>    </tr>";
+
+                }
+                else
+                {
+                       echo " <tr height='10%' >  <td width='100%' colspan='2'  > <center>  <font size='+5' color='#FFFFFF'>".$pref['12']."</font> </center>   </td>    </tr>";
+
+                 }
+
+
+                }
+
+            if ($banner == '2')
+        {
+
+                if ($pref['13']=='1')
+                {
+
+                        echo " <tr height='10%' >  <td width='10%'   > <center> <font size='+5' color='#FFFFFF'>LOGO </font> </center></td> <td width='90%' > <center><img src='banner/".$banner_add."'   style='border: 0px;'  align='middle'> </center>   </td>    </tr>";
+
+                }
+                else
+                {
+                       echo " <tr height='10%' >  <td width='100%' colspan='2'  > <center>  <img src='banner/".$banner_add."'   style='border: 0px;'  align='middle'> </center>   </td>    </tr>";
+
+                 }
+
+
+        }
+        ?>
         <tr>
                 <td width="10%">
                          <center>

@@ -1,13 +1,19 @@
 <?php
-include("auth-user.php");
+include("auth-cm.php");
 include("header.php");
-include ("bildbearbeitung.php");
+include("cms_links.php");
+include ("bildbearbeitung2.php");
+ echo "<link href='css/bootstrap.min.css' rel='stylesheet'>";
+
+echo" <form action='cms_banner.php' method='post' enctype='multipart/form-data'>";
+
+$db = new SQLite3('db/infosaeule.sqlite');
+
 
   echo "<link href='css/bootstrap.min.css' rel='stylesheet'>";
-  echo "<div id='cms_inaktiv' class='container'>";
+  echo "<div id='cms_banner' class='container'>";
 
-
- $db = new SQLite3('db/infosaeule.sqlite');
+;
 //Prüfe auf Bildnamen
 if(empty($_POST['bildname'])) {
                 die('Bildname darf nicht leer sein! Nochmal..<meta http-equiv="refresh" content="1;url=upload.php">');
@@ -51,10 +57,10 @@ $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
 
 
 
-          $groesse_b=1920;
+          $groesse_b=1000;
           $groesse_thumb=300;
-          $ordner_b="./upload/";
-          $ordner_thumb="./thumbnail/";
+          $ordner_b="./banner/";
+          $ordner_thumb="./banner_thumb/";
 
         if(!$db)die($db->lastErrorMsg());
         else{
@@ -64,10 +70,10 @@ $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
 
                    while ($row = $results->fetchArray() )
                     {
-                            if ($row['lfdnr']=='5') $ordner_thumb="./".$row['value']."/";
-                            if ($row['lfdnr']=='6') $ordner_b="./".$row['value']."/";
-                            if ($row['lfdnr']=='7') $groesse_thumb=$row['value'];
-                            if ($row['lfdnr']=='8') $groesse_b=$row['value'];
+                          //  if ($row['lfdnr']=='10') $ordner_thumb="./".$row['value']."/";
+                           // if ($row['lfdnr']=='11') $ordner_b="./".$row['value']."/";
+                            if ($row['lfdnr']=='11') $groesse_thumb=$row['value'];
+                            if ($row['lfdnr']=='10') $groesse_b=$row['value'];
 
                     }
 
@@ -83,10 +89,10 @@ $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
                                 if($_FILES['datei']['size'] <  1024000)
                                 {
                                                                         move_uploaded_file($_FILES['datei']['tmp_name'], "tmp/".$fileprefix.$endung);
-                                                                        bild_zu_breitbild_png("tmp/".$fileprefix.$endung,$ordner_b,$groesse_b);
+                                                                        bild_zu_banner_png("tmp/".$fileprefix.$endung,$ordner_b,$groesse_b,200);
 
-                                                                        echo "<p>Das Bild wurde Erfolgreich nach ".$ordner_b."/".$fileprefix.".png hochgeladen und wartet auf Freigabe<br></p>";
-                                                                        echo "<p><br><a href=view.php>Bilder ansehen</a></p>";
+                                                                        echo "<p>Das Bild wurde Erfolgreich nach banner/".$fileprefix.".png hochgeladen.<br></p>";
+                                                                    
                                                                         $db = new SQLite3('db/infosaeule.sqlite');
 
                                                                         if(!$db) die($db->lastErrorMsg());
@@ -95,9 +101,9 @@ $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
                                                                         if($db)
                                                                         {
                                                                                  $db->exec("INSERT INTO Bilder(name, user, erstzeit, akt_ab, akt_bis,ort,status)
-                                                                                 VALUES ('".$_POST['bildname'].".png', '".$user_id."', '".$zeit."', '','','".$ordner_b."','0')");
+                                                                                 VALUES ('".$_POST['bildname'].".png', '".$user_id."', '".$zeit."', '','','banner','3')");
                                                                                  //echo "<p><br><br>Bilddatei: upload/".$fileprefix.".png"<br></p>";
-                                                                                 echo "<p><img src=\"".bild_zu_breitbild_png("tmp/".$fileprefix.$endung,$ordner_thumb,$groesse_thumb)."png\" alt=\"Vorschau ".$fileprefix.".png\"></p>";
+                                                                                 echo "<p><img src=\"".bild_zu_banner_png("tmp/".$fileprefix.$endung,$ordner_thumb,$groesse_thumb,$groesse_thumb/5)."png\" alt=\"Vorschau ".$fileprefix.".png\"></p>";
                                                                                  //echo "<p><br>Bild wurde hinzugef&uuml;gt</p>";
 
                                                                                 $db->close();
@@ -115,4 +121,9 @@ $dateityp = GetImageSize($_FILES['datei']['tmp_name']);
                }
 
 ?>
+
+ <br>
+   <input type="hidden" value="hb" name="hb" >
+ <input class="btn btn-default btn-file" type="submit" value="ok!">
+</form>
 </div>
